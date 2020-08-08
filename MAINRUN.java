@@ -17,7 +17,7 @@ public class MAINRUN{
         frame.setResizable(true);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new Games(150));
+        frame.add(new Games(150, 2));
         frame.setVisible(true);
     }
 }

@@ -14,16 +14,17 @@ public class Games extends JPanel implements ActionListener{
     private static final long serialVersionUID = 1L;
 
     private String background = "/map.png";
-
+    private int numOfInfected;
     Timer gametimer;    
     List <Player> protag;
-
-    public Games(int numOfPeople){
+    
+    public Games(int numOfPeople, int numOfInfected){
         setFocusable(true);
         gametimer = new Timer(10, this);
         gametimer.start();
         protag = new ArrayList();
         addPeople(numOfPeople);
+        this.numOfInfected = numOfInfected;
     }
 
     public void addPeople(int num)
@@ -33,6 +34,13 @@ public class Games extends JPanel implements ActionListener{
             int x = (int)(Math.random()*1810+5);
             int y = (int)(Math.random()*970+5);
             protag.add(new Player(x,y));
+        }
+        for (int a = 0; a<numOfInfected; a++)
+        {
+            int b = (int)(Math.random()*protag.size());
+            if (protag.get(b).getStatus() == 1)
+                a--;
+            else protag.get(b).setStatus();    
         }
     }
 
