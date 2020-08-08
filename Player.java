@@ -85,8 +85,13 @@ public class Player extends Globalpositioning
         return y;
     }
     
-    public void draw(Graphics2D carrot2d){
+    public Image getJFrame()
+    {
         
+    }
+    
+    public void draw(Graphics2D carrot2d)
+    {
         carrot2d.drawImage(getPlayerImage(), (int)x, (int)y, null);
     }
 
