@@ -2,9 +2,11 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
+
+
 public class Player extends Globalpositioning
 {
-    private String MAINCHAR = "/myimage.png";
+    private ImageIcon icon;
     private double xMultiplier;
     private double yMultiplier;
     private int status;
@@ -13,6 +15,8 @@ public class Player extends Globalpositioning
 
     public Player(double x, double y){
         super(x, y);
+        String MAINCHAR = "/myimage.png";
+        icon = new ImageIcon(getClass().getResource(MAINCHAR));
         xMultiplier = 1;
         yMultiplier = 1;
         status = 0;
@@ -25,7 +29,9 @@ public class Player extends Globalpositioning
             age = "Old";
         speed();
     }
-
+    
+    
+    
     public void speed()
     {
         if (Math.random()<0.5)
@@ -86,8 +92,7 @@ public class Player extends Globalpositioning
 
     public Image getPlayerImage(){
         
-        ImageIcon pla = new ImageIcon(getClass().getResource(MAINCHAR));
-        return pla.getImage();
+        return icon.getImage();
     }
     
 }

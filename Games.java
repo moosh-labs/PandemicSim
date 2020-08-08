@@ -19,6 +19,8 @@ public class Games extends JPanel implements ActionListener{
     private String background = "/map.png";
     private String peepchange;
     private String badpeep = "/infected.png";
+    ImageIcon infec;
+    ImageIcon backgr;
     private int numOfInfected;
     Timer gametimer;    
     List <Player> protag;
@@ -30,6 +32,8 @@ public class Games extends JPanel implements ActionListener{
         protag = new ArrayList();
         addPeople(numOfPeople);
         this.numOfInfected = numOfInfected;
+        this.infec = new ImageIcon(getClass().getResource(badpeep));
+        this.backgr = new ImageIcon(getClass().getResource(background));
     }
 
     public void addPeople(int num)
@@ -46,7 +50,7 @@ public class Games extends JPanel implements ActionListener{
             if (protag.get(b).getStatus() == 1)
                 a--;
             else {protag.get(b).setStatus();
-                  protag.remove(b);
+                  
                   
                   
             }
@@ -70,12 +74,10 @@ public class Games extends JPanel implements ActionListener{
     }
 
     public Image getBackgroundImage(){
-        ImageIcon backgr = new ImageIcon(getClass().getResource(background));
         return backgr.getImage();
     }
 
     public Image getInfected(){
-        ImageIcon infec = new ImageIcon(getClass().getResource(badpeep));
         return infec.getImage();
     }    
 
