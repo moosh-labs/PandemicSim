@@ -12,8 +12,8 @@ public class CreateImageFileFromGraphicsObject {
  
     public static void main(String[] args) throws IOException {
  
-        int width = 250;
-        int height = 250;
+        int width = 50;
+        int height = 50;
  
         // Constructs a BufferedImage of one of the predefined image types.
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -30,8 +30,7 @@ public class CreateImageFileFromGraphicsObject {
         g2d.fillOval(0, 0, width, height);
  
         // create a string with yellow
-        g2d.setColor(Color.yellow);
-        g2d.drawString("Java Code Geeks", 50, 120);
+       
  
         // Disposes of this graphics context and releases any system resources that it is using. 
         g2d.dispose();

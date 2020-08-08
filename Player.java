@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class Player extends Globalpositioning
 {
-    private String MAINCHAR = "/MAINCHAR.png";
+    private String MAINCHAR = "/myimage.png";
     private int xMultiplier;
     private int yMultiplier;
     private int status;
@@ -37,9 +37,9 @@ public class Player extends Globalpositioning
     }
     
     public void update(){
-        if (y > 1080 || y<0)
+        if (y > 980 || y<0)
             yMultiplier *= -1;
-        if (x>1920 || x<0)
+        if (x>1820 || x<0)
             xMultiplier *= -1;
         x = x + speed * xMultiplier;
         y = y + speed * yMultiplier;

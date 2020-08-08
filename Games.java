@@ -30,8 +30,8 @@ public class Games extends JPanel implements ActionListener{
     {
         for(int i = 0; i<num; i++)
         {
-            int x = (int)(Math.random()*1910+5);
-            int y = (int)(Math.random()*1070+5);
+            int x = (int)(Math.random()*1810+5);
+            int y = (int)(Math.random()*970+5);
             protag.add(new Player(x,y));
         }
     }
