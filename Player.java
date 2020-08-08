@@ -80,12 +80,14 @@ public class Player extends Globalpositioning
     }
     
     public void draw(Graphics2D carrot2d){
+        
         carrot2d.drawImage(getPlayerImage(), (int)x, (int)y, null);
     }
 
     public Image getPlayerImage(){
+        
         ImageIcon pla = new ImageIcon(getClass().getResource(MAINCHAR));
         return pla.getImage();
     }
-
+    
 }

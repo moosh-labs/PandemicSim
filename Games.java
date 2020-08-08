@@ -1,4 +1,7 @@
 
+
+
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
@@ -14,6 +17,7 @@ public class Games extends JPanel implements ActionListener{
     private static final long serialVersionUID = 1L;
 
     private String background = "/map.png";
+    private String peepchange;
     private String badpeep = "/infected.png";
     private int numOfInfected;
     Timer gametimer;    
@@ -41,7 +45,11 @@ public class Games extends JPanel implements ActionListener{
             int b = (int)(Math.random()*protag.size());
             if (protag.get(b).getStatus() == 1)
                 a--;
-            else protag.get(b).setStatus();    
+            else {protag.get(b).setStatus();
+                  protag.remove(b);
+                  
+                  
+            }
         }
     }
 
@@ -52,12 +60,13 @@ public class Games extends JPanel implements ActionListener{
 
         carrot2d.drawImage(getBackgroundImage(),0,0,null);
 
-	carrot2d.drawImage(getInfected(),0,0,null);
+    carrot2d.drawImage(getInfected(),0,0,null);
 
         for(int i = 0; i<protag.size(); i++)
         {
             protag.get(i).draw(carrot2d);
         }
+        
     }
 
     public Image getBackgroundImage(){
