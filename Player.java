@@ -37,9 +37,9 @@ public class Player extends Globalpositioning
     }
     
     public void update(){
-        if (y > 480 || y<0)
+        if (y > 1080 || y<0)
             yMultiplier *= -1;
-        if (x>640 || x<0)
+        if (x>1920 || x<0)
             xMultiplier *= -1;
         x = x + speed * xMultiplier;
         y = y + speed * yMultiplier;
