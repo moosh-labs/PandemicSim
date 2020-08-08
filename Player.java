@@ -36,17 +36,34 @@ public class Player extends Globalpositioning
 
     public void update(){
         if (y > 980)
-            yMultiplier = -1*(Math.random()*2+1);
+            {
+                yMultiplier = -1*(Math.random()*2+1);
+                xMultiplier = Math.random()*4-2;
+            }
         else if (y<0)
-            yMultiplier = 1*(Math.random()*2+1);
+            {
+                yMultiplier = 1*(Math.random()*2+1);
+                xMultiplier = Math.random()*4-2;
+            }
         if (x > 1820)
-            xMultiplier = -1*(Math.random()*2+1);
+            {
+                xMultiplier = -1*(Math.random()*2+1);
+                yMultiplier = Math.random()*4-2;
+            }
         else if (x<0)
-            xMultiplier = 1*(Math.random()*2+1);
+            {
+                xMultiplier = 1*(Math.random()*2+1);
+                yMultiplier = Math.random()*4-2;
+            }
         x = x + xMultiplier;
         y = y + yMultiplier;
     }
 
+    public int getStatus()
+    {
+        return status;
+    }
+    
     public void draw(Graphics2D carrot2d){
         carrot2d.drawImage(getPlayerImage(), (int)x, (int)y, null);
     }
