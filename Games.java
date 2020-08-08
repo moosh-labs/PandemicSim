@@ -1,4 +1,5 @@
 
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
@@ -14,11 +15,12 @@ public class Games extends JPanel implements ActionListener{
     private static final long serialVersionUID = 1L;
 
     private String background = "/map.png";
+    private String peepchange;
     private String badpeep = "/infected.png";
     private int numOfInfected;
     Timer gametimer;    
     List <Player> protag;
-    
+
     public Games(int numOfPeople, int numOfInfected){
         setFocusable(true);
         gametimer = new Timer(10, this);
@@ -35,16 +37,28 @@ public class Games extends JPanel implements ActionListener{
             int x = (int)(Math.random()*1810+5);
             int y = (int)(Math.random()*970+5);
             protag.add(new Player(x,y));
+            /** can make 2 separate lists, one with healthy, one with infected, 
+               */
         }
         for (int a = 0; a<numOfInfected; a++)
         {
             int b = (int)(Math.random()*protag.size());
             if (protag.get(b).getStatus() == 1)
                 a--;
-            else protag.get(b).setStatus();   
+
+            else 
+            {
+                protag.get(b).setStatus();   
+                
+            }
         }
     }
 
+    public void getInfected1()
+    {
+        
+    }
+    
     public void paint(Graphics carrot){
         super.paint(carrot);
 
@@ -52,12 +66,13 @@ public class Games extends JPanel implements ActionListener{
 
         carrot2d.drawImage(getBackgroundImage(),0,0,null);
 
-	carrot2d.drawImage(getInfected(),0,0,null);
+        carrot2d.drawImage(getInfected(),0,0,null);
 
         for(int i = 0; i<protag.size(); i++)
         {
             protag.get(i).draw(carrot2d);
         }
+
     }
 
     public Image getBackgroundImage(){
