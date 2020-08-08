@@ -10,7 +10,6 @@ public class Person
 {
     private int status;
     private String age;
-    private Position position; //figure out how to do this correctly
     private double speed;
     public Person()
     {
