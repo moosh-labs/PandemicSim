@@ -12,13 +12,14 @@ public class Player extends Globalpositioning
     private int status;
     private String age;
     private int speed;
+    private String badpeep = "/infected.png";
 
     public Player(double x, double y){
         super(x, y);
         String MAINCHAR = "/myimage.png";
         icon = new ImageIcon(getClass().getResource(MAINCHAR));
-        xMultiplier = 1;
-        yMultiplier = 1;
+        xMultiplier = Math.random()*2;
+        yMultiplier = Math.random()*2;
         status = 0;
         int z = (int)(Math.random()*3);
         if (z == 0)
@@ -34,10 +35,15 @@ public class Player extends Globalpositioning
     
     public void speed()
     {
-        if (Math.random()<0.5)
-            xMultiplier *= -1;
-        if (Math.random()<0.5)
-            yMultiplier *= -1;
+        double num = Math.random();
+        if (num<0.5){
+            xMultiplier *= -1*num;
+            yMultiplier *= 1;
+        }
+        if (num<0.5){
+            yMultiplier *= -1*num;
+            xMultiplier *= 1;
+        }
     }
 
     public void update(){
@@ -68,6 +74,7 @@ public class Player extends Globalpositioning
     public void setStatus()
     {
         status = 1;
+        icon = new ImageIcon(getClass().getResource(badpeep));
     }
     
     public int getStatus()
@@ -85,13 +92,8 @@ public class Player extends Globalpositioning
         return y;
     }
     
-    public Image getJFrame()
-    {
+    public void draw(Graphics2D carrot2d){
         
-    }
-    
-    public void draw(Graphics2D carrot2d)
-    {
         carrot2d.drawImage(getPlayerImage(), (int)x, (int)y, null);
     }
 

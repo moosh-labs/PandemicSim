@@ -15,23 +15,22 @@ public class Games extends JPanel implements ActionListener{
     private static final long serialVersionUID = 1L;
 
     private String background = "/map.png";
-    private String peepchange;
-    private String badpeep = "/infected.png";
-    ImageIcon infec;
+    // // private String badpeep = "/infected.png";
+    // ImageIcon infec;
     ImageIcon backgr;
     private int numOfInfected;
     Timer gametimer;    
     List <Player> protag;
-    List <Player> badness;
+    // List <Player> badness;
 
     public Games(int numOfPeople, int numOfInfected){
         setFocusable(true);
         gametimer = new Timer(10, this);
         gametimer.start();
         protag = new ArrayList();
-        badness = new ArrayList();
+        // badness = new ArrayList();
         this.numOfInfected = numOfInfected;
-        this.infec = new ImageIcon(getClass().getResource(badpeep));
+        // this.infec = new ImageIcon(getClass().getResource(badpeep));
         this.backgr = new ImageIcon(getClass().getResource(background));
         addPeople(numOfPeople);
     }
@@ -52,8 +51,9 @@ public class Games extends JPanel implements ActionListener{
             if (protag.get(b).getStatus() == 1)
                 a--;
             else {protag.get(b).setStatus();
-                  badness.add(protag.get(b));
-                  protag.remove(protag.get(b));
+                
+                //   badness.add(protag.get(b));
+                //   protag.remove(protag.get(b));
                   
                   
             }
@@ -72,7 +72,7 @@ public class Games extends JPanel implements ActionListener{
 
         carrot2d.drawImage(getBackgroundImage(),0,0,null);
 
-        carrot2d.drawImage(getInfected(),0,0,null);
+        // carrot2d.drawImage(getInfected(),0,0,null);
 
         for(int i = 0; i<protag.size(); i++)
         {
@@ -85,9 +85,9 @@ public class Games extends JPanel implements ActionListener{
         return backgr.getImage();
     }
 
-    public Image getInfected(){
-        return infec.getImage();
-    }    
+    // public Image getInfected(){
+    //     return infec.getImage();
+    // }    
 
     public void actionPerformed(ActionEvent e){
         for(int i = 0; i<protag.size(); i++)
