@@ -24,8 +24,8 @@ public class Games extends JPanel implements ActionListener{
         gametimer = new Timer(10, this);
         gametimer.start();
         protag = new ArrayList();
-        addPeople(numOfPeople);
         this.numOfInfected = numOfInfected;
+        addPeople(numOfPeople);
     }
 
     public void addPeople(int num)
@@ -41,7 +41,7 @@ public class Games extends JPanel implements ActionListener{
             int b = (int)(Math.random()*protag.size());
             if (protag.get(b).getStatus() == 1)
                 a--;
-            else protag.get(b).setStatus();    
+            else protag.get(b).setStatus();   
         }
     }
 
