@@ -1,17 +1,11 @@
-
-/**
- * Write a description of class MAINRUN here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 import java.applet.*;
+import java.awt.*;
 import java.awt.*;
 import java.util.*;
 import javax.swing.JFrame;
 public class MAINRUN{
 
-    public static void main(String args[]) extends Applet
+    public static void main(String args[])
     {
         JFrame frame = new JFrame();
         frame.pack();

@@ -1,5 +1,3 @@
-
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
@@ -15,22 +13,23 @@ public class Games extends JPanel implements ActionListener{
     private static final long serialVersionUID = 1L;
 
     private String background = "/map.png";
-    // // private String badpeep = "/infected.png";
-    // ImageIcon infec;
+    private String peepchange;
+    private String badpeep = "/infected.png";
+    ImageIcon infec;
     ImageIcon backgr;
     private int numOfInfected;
     Timer gametimer;    
     List <Player> protag;
-    // List <Player> badness;
+    List <Player> badness;
 
     public Games(int numOfPeople, int numOfInfected){
         setFocusable(true);
         gametimer = new Timer(10, this);
         gametimer.start();
         protag = new ArrayList();
-        // badness = new ArrayList();
+        badness = new ArrayList();
         this.numOfInfected = numOfInfected;
-        // this.infec = new ImageIcon(getClass().getResource(badpeep));
+        this.infec = new ImageIcon(getClass().getResource(badpeep));
         this.backgr = new ImageIcon(getClass().getResource(background));
         addPeople(numOfPeople);
     }
@@ -51,16 +50,10 @@ public class Games extends JPanel implements ActionListener{
             if (protag.get(b).getStatus() == 1)
                 a--;
             else {protag.get(b).setStatus();
-<<<<<<< HEAD
-                
-                //   badness.add(protag.get(b));
-                //   protag.remove(protag.get(b));
-                  
-                  
-=======
                   badness.add(protag.get(b));
                   protag.remove(protag.get(b));
->>>>>>> d58220a1bb8b6c4380950130aa720f071004f28b
+                  
+                  
             }
         }
     }
@@ -77,7 +70,7 @@ public class Games extends JPanel implements ActionListener{
 
         carrot2d.drawImage(getBackgroundImage(),0,0,null);
 
-        // carrot2d.drawImage(getInfected(),0,0,null);
+        carrot2d.drawImage(getInfected(),0,0,null);
 
         for(int i = 0; i<protag.size(); i++)
         {
@@ -90,9 +83,9 @@ public class Games extends JPanel implements ActionListener{
         return backgr.getImage();
     }
 
-    // public Image getInfected(){
-    //     return infec.getImage();
-    // }    
+    public Image getInfected(){
+        return infec.getImage();
+    }    
 
     public void actionPerformed(ActionEvent e){
         for(int i = 0; i<protag.size(); i++)
@@ -108,28 +101,12 @@ public class Games extends JPanel implements ActionListener{
                 else 
                 {
                     double z = Math.random();//this is the likelihood of getting infected, depends on virsu, edit later
-                    if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<15) //3 should change depending on the virus, edit later
-                    {
-                        if (z<0.4)
-                            protag.get(i).setStatus();
-                    else if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<30) //3 should change depending on the virus, edit later
-                    {
-                        if (z<0.3)
-                            protag.get(i).setStatus();
-                    else if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<45) //3 should change depending on the virus, edit later
+                    if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<3) //3 should change depending on the virus, edit later
                     {
                         if (z<0.2)
                             protag.get(i).setStatus();
                     }
-                    if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<15) //3 should change depending on the virus, edit later
-                    {
-                        if (z<0.4)
-                            protag.get(i).setStatus();
-                    else if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<30) //3 should change depending on the virus, edit later
-                    {
-                        if (z<0.3)
-                            protag.get(i).setStatus();
-                    else if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<45) //3 should change depending on the virus, edit later
+                    if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<3) //3 should change depending on the virus, edit later
                     {
                         if (z<0.2)
                             protag.get(i).setStatus();
