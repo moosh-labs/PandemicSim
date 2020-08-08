@@ -17,15 +17,19 @@ public class Games extends JPanel implements ActionListener{
 
     private String badpeep = "/infected.png";
     
+
+    private int numOfInfected;
+
     Timer gametimer;    
     List <Player> protag;
-
-    public Games(int numOfPeople){
+    
+    public Games(int numOfPeople, int numOfInfected){
         setFocusable(true);
         gametimer = new Timer(10, this);
         gametimer.start();
         protag = new ArrayList();
         addPeople(numOfPeople);
+        this.numOfInfected = numOfInfected;
     }
 
     public void addPeople(int num)
@@ -35,6 +39,13 @@ public class Games extends JPanel implements ActionListener{
             int x = (int)(Math.random()*1810+5);
             int y = (int)(Math.random()*970+5);
             protag.add(new Player(x,y));
+        }
+        for (int a = 0; a<numOfInfected; a++)
+        {
+            int b = (int)(Math.random()*protag.size());
+            if (protag.get(b).getStatus() == 1)
+                a--;
+            else protag.get(b).setStatus();    
         }
     }
 
@@ -74,7 +85,20 @@ public class Games extends JPanel implements ActionListener{
             {
                 if (protag.get(i).getStatus() == 1)
                     break;
-                
+                else 
+                {
+                    double z = Math.random();//this is the likelihood of getting infected, depends on virsu, edit later
+                    if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<3) //3 should change depending on the virus, edit later
+                    {
+                        if (z<0.2)
+                            protag.get(i).setStatus();
+                    }
+                    if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<3) //3 should change depending on the virus, edit later
+                    {
+                        if (z<0.2)
+                            protag.get(i).setStatus();
+                    }
+                }
             }
         }
         repaint();

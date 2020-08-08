@@ -59,9 +59,24 @@ public class Player extends Globalpositioning
         y = y + yMultiplier;
     }
 
+    public void setStatus()
+    {
+        status = 1;
+    }
+    
     public int getStatus()
     {
         return status;
+    }
+    
+    public double getX()
+    {
+        return x;
+    }
+    
+    public double getY()
+    {
+        return y;
     }
     
     public void draw(Graphics2D carrot2d){
