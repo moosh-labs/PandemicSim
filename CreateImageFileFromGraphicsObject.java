@@ -22,11 +22,10 @@ public class CreateImageFileFromGraphicsObject {
         Graphics2D g2d = bufferedImage.createGraphics();
  
         // fill all the image with white
-        g2d.setColor(Color.white);
-        g2d.fillRect(0, 0, width, height);
+        
  
         // create a circle with blackhttps://www.youtube.com/watch?v=6NppIiqGv8g
-        g2d.setColor(Color.black);
+        g2d.setColor(Color.yellow);
         g2d.fillOval(0, 0, width, height);
  
         // create a string with yellow
@@ -36,12 +35,11 @@ public class CreateImageFileFromGraphicsObject {
         g2d.dispose();
  
         // Save as PNG
-        File file = new File("myimage.png");
+        File file = new File("infected.png");
         ImageIO.write(bufferedImage, "png", file);
  
         // Save as JPEG
-        file = new File("myimage.jpg");
-        ImageIO.write(bufferedImage, "jpg", file);
+        
  
     }
  
