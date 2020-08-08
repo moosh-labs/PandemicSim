@@ -22,12 +22,14 @@ public class Games extends JPanel implements ActionListener{
     private int numOfInfected;
     Timer gametimer;    
     List <Player> protag;
+    List <Player> badness;
 
     public Games(int numOfPeople, int numOfInfected){
         setFocusable(true);
         gametimer = new Timer(10, this);
         gametimer.start();
         protag = new ArrayList();
+        badness = new ArrayList();
         this.numOfInfected = numOfInfected;
         this.infec = new ImageIcon(getClass().getResource(badpeep));
         this.backgr = new ImageIcon(getClass().getResource(background));
@@ -50,7 +52,8 @@ public class Games extends JPanel implements ActionListener{
             if (protag.get(b).getStatus() == 1)
                 a--;
             else {protag.get(b).setStatus();
-                  
+                  badness.add(protag.get(b));
+                  protag.remove(protag.get(b));
                   
                   
             }
