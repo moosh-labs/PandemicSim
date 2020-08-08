@@ -5,13 +5,13 @@ import javax.swing.ImageIcon;
 public class Player extends Globalpositioning
 {
     private String MAINCHAR = "/myimage.png";
-    private int xMultiplier;
-    private int yMultiplier;
+    private double xMultiplier;
+    private double yMultiplier;
     private int status;
     private String age;
     private int speed;
-    
-    public Player(int x, int y){
+
+    public Player(double x, double y){
         super(x, y);
         xMultiplier = 1;
         yMultiplier = 1;
@@ -25,33 +25,35 @@ public class Player extends Globalpositioning
             age = "Old";
         speed();
     }
-    
+
     public void speed()
     {
-        if (age.equals("Kid"))
-            speed = 6;
-        else if (age.equals("Normal"))
-            speed = 4;
-        else if (age.equals("Old"))
-            speed = 3;
-    }
-    
-    public void update(){
-        if (y > 980 || y<0)
-            yMultiplier *= -1;
-        if (x>1820 || x<0)
+        if (Math.random()<0.5)
             xMultiplier *= -1;
-        x = x + speed * xMultiplier;
-        y = y + speed * yMultiplier;
+        if (Math.random()<0.5)
+            yMultiplier *= -1;
     }
-    
+
+    public void update(){
+        if (y > 980)
+            yMultiplier = -1*(Math.random()*2+1);
+        else if (y<0)
+            yMultiplier = 1*(Math.random()*2+1);
+        if (x > 1820)
+            xMultiplier = -1*(Math.random()*2+1);
+        else if (x<0)
+            xMultiplier = 1*(Math.random()*2+1);
+        x = x + xMultiplier;
+        y = y + yMultiplier;
+    }
+
     public void draw(Graphics2D carrot2d){
-        carrot2d.drawImage(getPlayerImage(), x, y, null);
+        carrot2d.drawImage(getPlayerImage(), (int)x, (int)y, null);
     }
-    
+
     public Image getPlayerImage(){
         ImageIcon pla = new ImageIcon(getClass().getResource(MAINCHAR));
         return pla.getImage();
     }
-    
+
 }
