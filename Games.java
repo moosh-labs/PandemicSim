@@ -35,7 +35,7 @@ public class Games extends JPanel implements ActionListener{
             protag.add(new Player(x,y));
         }
     }
-    
+
     public void paint(Graphics carrot){
         super.paint(carrot);
 
@@ -58,6 +58,15 @@ public class Games extends JPanel implements ActionListener{
         for(int i = 0; i<protag.size(); i++)
         {
             protag.get(i).update();
+        }
+        for(int i = 0; i<protag.size(); i++)
+        {
+            for(int j = 0; i<protag.size(); i++)
+            {
+                if (protag.get(i).getStatus() == 1)
+                    break;
+                
+            }
         }
         repaint();
     }
