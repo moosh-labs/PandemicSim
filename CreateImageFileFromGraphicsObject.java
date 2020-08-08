@@ -25,7 +25,7 @@ public class CreateImageFileFromGraphicsObject {
         g2d.setColor(Color.white);
         g2d.fillRect(0, 0, width, height);
  
-        // create a circle with black
+        // create a circle with blackhttps://www.youtube.com/watch?v=6NppIiqGv8g
         g2d.setColor(Color.black);
         g2d.fillOval(0, 0, width, height);
  
