@@ -15,6 +15,8 @@ public class Games extends JPanel implements ActionListener{
 
     private String background = "/map.png";
 
+    private String badpeep = "/infected.png";
+    
     Timer gametimer;    
     List <Player> protag;
 
@@ -42,6 +44,8 @@ public class Games extends JPanel implements ActionListener{
         Graphics2D carrot2d = (Graphics2D) carrot;
 
         carrot2d.drawImage(getBackgroundImage(),0,0,null);
+        
+        carrot2d.drawImage(getInfected(),0,0,null);
 
         for(int i = 0; i<protag.size(); i++)
         {
@@ -52,6 +56,11 @@ public class Games extends JPanel implements ActionListener{
     public Image getBackgroundImage(){
         ImageIcon backgr = new ImageIcon(getClass().getResource(background));
         return backgr.getImage();
+    }
+    
+    public Image getInfected(){
+        ImageIcon infec = new ImageIcon(getClass().getResource(badpeep));
+        return infec.getImage();
     }
 
     public void actionPerformed(ActionEvent e){
