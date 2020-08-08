@@ -13,7 +13,7 @@ public class MAINRUN{
     {
         JFrame frame = new JFrame();
         frame.pack();
-        frame.setSize(640,480);
+        frame.setSize(1920,1080);
         frame.setResizable(true);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
