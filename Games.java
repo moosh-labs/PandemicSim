@@ -88,42 +88,6 @@ public class Games extends JPanel implements ActionListener{
             }}
 
         else {
-<<<<<<< HEAD
-             for(int i = 0; i<protag.size(); i++)
-         {
-                for(int j = 1; j<protag.size(); j++)
-             {
-                    if(j != i){
-                     if (protag.get(i).getX() - protag.get(j).getX() < 200 && protag.get(i).getX() - protag.get(j).getX() > 0)
-                         {
-                          protag.get(i).update(3);
-                          protag.get(j).update(2);
-                         }
-                     else{ if (protag.get(i).getX() - protag.get(j).getX() > -200 && protag.get(i).getX() - protag.get(j).getX() < 0)
-                         {
-                          protag.get(i).update(2);
-                          protag.get(j).update(3);
-                         }
-                     else{ if (protag.get(i).getY() - protag.get(j).getY() < 200 && protag.get(i).getY() - protag.get(j).getY() > 0)
-                         {
-                            protag.get(j).update(0);
-                            protag.get(i).update(1);
-                         }
-                             
-                     else{ if (protag.get(i).getY() - protag.get(j).getY() > -200 && protag.get(i).getY() - protag.get(j).getY() < 0)
-                         {
-                             protag.get(i).update(0);
-                             protag.get(j).update(1);
-                         }
-                    }
-                }
-             }
-             protag.get(i).update();
-            }
-     }
-         }}}
-    
-=======
             for(int i = 0; i<protag.size(); i++)
             {
                 for(int j = 0; j<protag.size(); j++)
@@ -161,7 +125,6 @@ public class Games extends JPanel implements ActionListener{
                 }
             }}}
 
->>>>>>> 10910c64db70250ea6df51674a7e49fcc2d286d0
     public void actionPerformed(ActionEvent e){
         for(int i = 0; i<protag.size(); i++)
             protag.get(i).update();

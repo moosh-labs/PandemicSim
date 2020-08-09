@@ -13,14 +13,17 @@ public class Player extends Globalpositioning
     private String age;
     private int speed;
     private String badpeep = "/infected.png";
-
+    private String infectold = "/infectedelder.png";
+    private String infectadult = "/infectedadult.png";
+    private String infectchild = "/infectedchild.png"; 
 
     public Player(double x, double y){
         super(x, y);
-        String MAINCHAR = "/myimage.png";
+       String MAINCHAR = "/myimage.png";
         String Smallchar = "/Childsim.png";
         String Bigchar = "/Adultsim.png";
         String Oldchar = "/Eldersim.png";
+
 
 
 
@@ -32,12 +35,16 @@ public class Player extends Globalpositioning
         if (z == 0)
         {
             age = "Normal";
+            if(status != 1)
             icon = new ImageIcon(getClass().getResource(Bigchar));
+            else icon = new ImageIcon(getClass().getResource(infectadult));
         }
         else { if (z == 1){
         
             age = "Kid";
+            if(status != 1)
             icon = new ImageIcon(getClass().getResource(Smallchar));
+            else icon = new ImageIcon(getClass().getResource(infectchild));
         }
         else { if (z == 2)
         {
@@ -133,7 +140,18 @@ public class Player extends Globalpositioning
     public void setStatus()
     {
         status = 1;
-        icon = new ImageIcon(getClass().getResource(badpeep));
+        if(age == "Normal")
+        icon = new ImageIcon(getClass().getResource(infectold));
+        else{ if(age == "Kid")
+        {
+            icon = new ImageIcon(getClass().getResource(infectchild));
+        }
+        else{ if(age == "Old")
+        {
+            icon = new ImageIcon(getClass().getResource(infectadult));
+        }
+    }
+    }
     }
     
     public int getStatus()
