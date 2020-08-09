@@ -12,10 +12,10 @@ public class Player extends Globalpositioning
     private int status;
     private String age;
     private int speed;
-    private String badpeep = "/infected.png";
     private String infectold = "/infectedelder.png";
     private String infectadult = "/infectedadult.png";
     private String infectchild = "/infectedchild.png"; 
+    private String dead = "/deaded.png";
 
     public Player(double x, double y){
         super(x, y);
@@ -154,6 +154,29 @@ public class Player extends Globalpositioning
     }
     }
     
+    public void death(){
+        long start = System.currentTimeMillis();
+        while (System.currentTimeMillis()-start<1000){
+            if(status == 1){
+                if(age == "Old"){
+                   if(Math.random() < 0.030){
+                    icon = new ImageIcon(getClass().getResource(dead));
+                   }
+                }
+                if(age == "Normal"){
+                   if(Math.random() < 0.015){
+                    icon = new ImageIcon(getClass().getResource(dead));
+                    }
+                }
+                if(age == "Kid"){
+                   if(Math.random() < 0.005){
+                    icon = new ImageIcon(getClass().getResource(dead));
+                    }
+                }
+            }
+        }
+    }
+
     public int getStatus()
     {
         return status;

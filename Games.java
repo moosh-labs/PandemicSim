@@ -22,8 +22,8 @@ public class Games extends JPanel implements ActionListener{
     private boolean social;
     private TimeUnit time;
     private int tim;
-    private double percent;
-    public Games(int numOfPeople, int numOfInfected, boolean social,double percent){
+    private double percento;
+    public Games(int numOfPeople, int numOfInfected, boolean social, double percento){
         setFocusable(true);
         gametimer = new Timer(150, this);
         gametimer.start();
@@ -32,7 +32,7 @@ public class Games extends JPanel implements ActionListener{
         this.numOfInfected = numOfInfected;
         this.backgr = new ImageIcon(getClass().getResource(background));
         addPeople(numOfPeople);
-        this.percent = percent;
+        this.percento = percento;
         tim = 0;
     }
 
@@ -43,8 +43,6 @@ public class Games extends JPanel implements ActionListener{
             int x = (int)(Math.random()*1810+5);
             int y = (int)(Math.random()*970+5);
             protag.add(new Player(x,y));
-            /** can make 2 separate lists, one with healthy, one with infected, 
-             */
         }
         if(numOfInfected !=0)
             for (int a = 0; a<numOfInfected; a++)
@@ -93,7 +91,7 @@ public class Games extends JPanel implements ActionListener{
         }
 
         else {
-            for(int i = 0; i<protag.size()*(percent/100); i++)
+            for(int i = 0; i<protag.size()*(percento/100); i++)
             {
                 for(int j = 0; j<protag.size(); j++)
                 {
@@ -128,7 +126,7 @@ public class Games extends JPanel implements ActionListener{
                     }
                 }
             } 
-            for (int e = (int)(protag.size()*(percent/100)); e<protag.size(); e++)
+            for (int e = (int)(protag.size()*(percento/100)); e<protag.size(); e++)
             {
                 protag.get(e).update();
             }
