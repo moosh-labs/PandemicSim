@@ -17,11 +17,12 @@ public class Games extends JPanel implements ActionListener{
     private int numOfInfected;
     Timer gametimer;    
     List <Player> protag;
-
-    public Games(int numOfPeople, int numOfInfected){
+    private boolean social;
+    public Games(int numOfPeople, int numOfInfected, boolean social){
         setFocusable(true);
         gametimer = new Timer(10, this);
         gametimer.start();
+        this.social = social;
         protag = new ArrayList();
         this.numOfInfected = numOfInfected;
         this.backgr = new ImageIcon(getClass().getResource(background));
@@ -36,7 +37,7 @@ public class Games extends JPanel implements ActionListener{
             int y = (int)(Math.random()*970+5);
             protag.add(new Player(x,y));
             /** can make 2 separate lists, one with healthy, one with infected, 
-               */
+             */
         }
         for (int a = 0; a<numOfInfected; a++)
         {
@@ -44,24 +45,22 @@ public class Games extends JPanel implements ActionListener{
             if (protag.get(b).getStatus() == 1)
                 a--;
             else {protag.get(b).setStatus();
-                  
-                  
+
             }
         }
     }
 
     public void getInfected1()
     {
-        
+
     }
-    
+
     public void paint(Graphics carrot){
         super.paint(carrot);
 
         Graphics2D carrot2d = (Graphics2D) carrot;
 
         carrot2d.drawImage(getBackgroundImage(),0,0,null);
-
 
         for(int i = 0; i<protag.size(); i++)
         {
@@ -74,12 +73,51 @@ public class Games extends JPanel implements ActionListener{
         return backgr.getImage();
     }
 
-
+    
+    
+    
     public void actionPerformed(ActionEvent e){
         for(int i = 0; i<protag.size(); i++)
-        {
             protag.get(i).update();
+            
+        /**
+         * if (!social)
+            for(int i = 0; i<protag.size(); i++)
+            {
+                protag.get(i).update();
+            }
+        for(int i = 0; i<protag.size(); i++)
+        {
+            for(int j = 0; i<protag.size(); i++)
+            {
+                if (social)
+                {
+                    if (protag.get(i).getX()-protag.get(j).getX()<25&&protag.get(i).getX()-protag.get(j).getX()>0)
+                        {
+                         protag.get(i).update(3);
+                         protag.get(j).update(2);
+                        }
+                    else if (protag.get(i).getX()-protag.get(j).getX()>-25&&protag.get(i).getX()-protag.get(j).getX()<0)
+                        {
+                         protag.get(i).update(2);
+                         protag.get(j).update(3);
+                        }
+                    else if (protag.get(i).getY()-protag.get(j).getY()<25&&protag.get(i).getY()-protag.get(j).getY()>0)
+                        {
+                            protag.get(i).update(1);
+                            protag.get(j).update(0);
+                        }
+                    else if (protag.get(i).getY()-protag.get(j).getY()>-25&&protag.get(i).getY()-protag.get(j).getY()<0)
+                        {
+                            protag.get(i).update(0);
+                            protag.get(j).update(1);
+                        }
+                    protag.get(i).update();
+                }
+            }
         }
+         * 
+         */
         for(int i = 0; i<protag.size(); i++)
         {
             for(int j = 0; i<protag.size(); i++)
@@ -120,8 +158,10 @@ public class Games extends JPanel implements ActionListener{
                             protag.get(i).setStatus();
                     }
                 }
+                
             }
         }
+
         repaint();
     }
 }
