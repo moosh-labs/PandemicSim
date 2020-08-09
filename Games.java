@@ -82,7 +82,7 @@ public class Games extends JPanel implements ActionListener{
     }
 
     
-    public void distancesoc(){
+    public void distancesocial(){
         if (social == false){
              for(int i = 0; i<protag.size(); i++)
              {
@@ -92,11 +92,12 @@ public class Games extends JPanel implements ActionListener{
         else {
              for(int i = 0; i<protag.size(); i++)
          {
-             for(int j = 0; j<protag.size(); j++)
+                for(int j = 0; j<protag.size(); j++)
              {
-                
+                    if(j != i){
                      if (protag.get(i).getX()-protag.get(j).getX()<25&&protag.get(i).getX()-protag.get(j).getX()>0)
                          {
+                            System.out.println(protag.get(i) + " " + protag.get(i).getX() + " " + protag.get(j) + " " + protag.get(j).getX());
                           protag.get(i).update(3);
                           protag.get(j).update(2);
                          }
@@ -117,6 +118,7 @@ public class Games extends JPanel implements ActionListener{
                          }
                      protag.get(i).update();
                  }
+                }
              }
          }
      }
