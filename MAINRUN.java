@@ -17,7 +17,7 @@ public class MAINRUN{
         frame.setVisible(true);
         long start = System.currentTimeMillis();
         while (System.currentTimeMillis()-start<2000){}
-        frame.add(new Games(150, 1, true, 80));
+        frame.add(new Games(100, 5, true, 80));
         frame.setVisible(true);
     }
 }

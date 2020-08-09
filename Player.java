@@ -159,20 +159,26 @@ public class Player extends Globalpositioning
         while (System.currentTimeMillis()-start<1000){
             if(status == 1){
                 if(age == "Old"){
-                   if(Math.random() < 0.030){
+                   if(Math.random() < 0.000000010){
                     icon = new ImageIcon(getClass().getResource(dead));
+                    xMultiplier = 0;
+                    yMultiplier = 0;
                     status = 2;
                    }
                 }
                 if(age == "Normal"){
-                   if(Math.random() < 0.015){
+                   if(Math.random() < 0.000000005){
                     icon = new ImageIcon(getClass().getResource(dead));
+                    xMultiplier = 0;
+                    yMultiplier = 0;
                     status = 2;
                     }
                 }
                 if(age == "Kid"){
-                   if(Math.random() < 0.005){
+                   if(Math.random() < 0.000000002){
                     icon = new ImageIcon(getClass().getResource(dead));
+                    xMultiplier = 0;
+                    yMultiplier = 0;
                     status = 2;
                     }
                 }
