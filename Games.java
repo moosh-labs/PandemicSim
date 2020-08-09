@@ -147,32 +147,50 @@ public class Games extends JPanel implements ActionListener{
                     if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<5) //3 should change depending on the virus, edit later
                     {
                         if (z<0.004)
-                            protag.get(i).setStatus();
+                            {
+                                protag.get(i).setStatus();
+                                numOfInfected++;
+                            }
                     }
                     else if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<10) //3 should change depending on the virus, edit later
                     {
                         if (z<0.003)
-                            protag.get(i).setStatus();
+                            {
+                                protag.get(i).setStatus();
+                                numOfInfected++;
+                            }
                     }
                     else if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<20) //3 should change depending on the virus, edit later
                     {
                         if (z<0.002)
-                            protag.get(i).setStatus();
+                            {
+                                protag.get(i).setStatus();
+                                numOfInfected++;
+                            }
                     }
                     if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<5) //3 should change depending on the virus, edit later
                     {
                         if (z<0.004)
-                            protag.get(i).setStatus();
+                            {
+                                protag.get(i).setStatus();
+                                numOfInfected++;
+                            }
                     }
                     else if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<10) //3 should change depending on the virus, edit later
                     {
                         if (z<0.003)
-                            protag.get(i).setStatus();
+                            {
+                                protag.get(i).setStatus();
+                                numOfInfected++;
+                            }
                     }
                     else if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<20) //3 should change depending on the virus, edit later
                     {
                         if (z<0.002)
-                            protag.get(i).setStatus();
+                            {
+                                protag.get(i).setStatus();
+                                numOfInfected++;
+                            }
                     }
                 }
 
