@@ -154,7 +154,7 @@ public class Player extends Globalpositioning
     }
     }
     
-    public void death(){
+    public boolean death(){
         long start = System.currentTimeMillis();
         while (System.currentTimeMillis()-start<1000){
             if(status == 1){
@@ -162,24 +162,33 @@ public class Player extends Globalpositioning
                    if(Math.random() < 0.030){
                     icon = new ImageIcon(getClass().getResource(dead));
                     status = 2;
+                    return true;
                    }
                 }
                 if(age == "Normal"){
                    if(Math.random() < 0.015){
                     icon = new ImageIcon(getClass().getResource(dead));
                     status = 2;
+                    return true;
                     }
                 }
                 if(age == "Kid"){
                    if(Math.random() < 0.005){
                     icon = new ImageIcon(getClass().getResource(dead));
                     status = 2;
+                    return true;
                     }
                 }
             }
         }
+        return false;
     }
 
+    public String getAge()
+    {
+        return age;
+    }
+    
     public int getStatus()
     {
         return status;
