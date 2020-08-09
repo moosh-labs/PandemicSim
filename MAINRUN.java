@@ -3,10 +3,10 @@ import java.awt.*;
 import java.awt.*;
 import java.util.*;
 import javax.swing.JFrame;
-public class MAINRUN extends Applet
+public class MAINRUN 
 {
 
-    public static void init(String args[])
+    public static void main(String args[])
     {
         JFrame frame = new JFrame();
         frame.pack();
@@ -14,7 +14,9 @@ public class MAINRUN extends Applet
         frame.setResizable(true);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new Games(10000, 2));
+        frame.add(new Games(1000, 0, true));
         frame.setVisible(true);
+        
+        
     }
 }

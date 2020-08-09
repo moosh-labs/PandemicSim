@@ -12,7 +12,7 @@ public class Games extends JPanel implements ActionListener{
 
     private static final long serialVersionUID = 1L;
 
-    private String background = "/map.png";
+    private String background = "/Pancity1.png";
     ImageIcon backgr;
     private int numOfInfected;
     Timer gametimer;    
@@ -45,7 +45,7 @@ public class Games extends JPanel implements ActionListener{
             if (protag.get(b).getStatus() == 1)
                 a--;
             else {protag.get(b).setStatus();
-
+            
             }
         }
     }
