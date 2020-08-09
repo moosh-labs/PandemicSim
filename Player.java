@@ -83,6 +83,14 @@ public class Player extends Globalpositioning
                 xMultiplier = 1*(Math.random()*2+1);
                 yMultiplier = Math.random()*4-2;
             }
+        if (xMultiplier<0 && xMultiplier>-1)
+            xMultiplier = -1;
+        else if (xMultiplier > 0 && xMultiplier<1)
+            xMultiplier = 1;
+        if (yMultiplier<0 && yMultiplier>-1)
+            yMultiplier = -1;
+        else if (yMultiplier > 0 && yMultiplier<1)
+            yMultiplier = 1;
         x = x + xMultiplier;
         y = y + yMultiplier;
     }
