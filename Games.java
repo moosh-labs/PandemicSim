@@ -1,4 +1,3 @@
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
@@ -35,11 +34,7 @@ public class Games extends JPanel implements ActionListener{
     private int adultsDead;
     private int oldDead;
     private boolean map;
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> fa1917ef310455be7d61a1ed8ce6b2496071b5ee
     public Games(int numOfPeople, int totalNumOfInfected, boolean social, double percento, boolean map){
         setFocusable(true);
         gametimer = new Timer(10, this);
@@ -47,11 +42,7 @@ public class Games extends JPanel implements ActionListener{
         this.social = social;
         protag = new ArrayList();
         this.backgr = new ImageIcon(getClass().getResource(background));
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> fa1917ef310455be7d61a1ed8ce6b2496071b5ee
         this.percento = percento;
         kidsInfected = 0;
         adultsInfected = 0;
@@ -63,11 +54,7 @@ public class Games extends JPanel implements ActionListener{
         adultsDead = 0;
         oldDead = 0;
         this.map = map;
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> fa1917ef310455be7d61a1ed8ce6b2496071b5ee
         totalHealthy = numOfPeople - totalNumOfInfected;
         this.totalNumOfInfected = totalNumOfInfected;
         totalDead = 0;
@@ -83,19 +70,11 @@ public class Games extends JPanel implements ActionListener{
             int y = (int)(Math.random()*970+5);
             protag.add(new Player(x,y));
         }
-<<<<<<< HEAD
-        System.out.println("There's hope for you");
         if(totalNumOfInfected != 0)
         {
-            System.out.println("There's no hope for you private");
-=======
-        if(totalNumOfInfected != 0)
-        {
->>>>>>> fa1917ef310455be7d61a1ed8ce6b2496071b5ee
             for (int a = 0; a<totalNumOfInfected; a++)
             {
                 int b = (int)(Math.random()*protag.size());
-                System.out.println("There's hope for you private");
                 if (protag.get(b).getStatus() == 1)
                     a--;
                 else {protag.get(b).setStatus();
@@ -106,12 +85,8 @@ public class Games extends JPanel implements ActionListener{
                     else if (protag.get(b).getAge().equals("Old"))
                         oldInfected++;
                 }
-<<<<<<< HEAD
-            }}
-=======
             }
         }
->>>>>>> fa1917ef310455be7d61a1ed8ce6b2496071b5ee
 
     }
 
