@@ -14,20 +14,36 @@ public class Player extends Globalpositioning
     private int speed;
     private String badpeep = "/infected.png";
 
+
     public Player(double x, double y){
         super(x, y);
         String MAINCHAR = "/myimage.png";
+        String Smallchar = "/Childsim.png";
+        String Bigchar = "/Adultsim.png";
+        String Oldchar = "/Eldersim.png";
+
+
+
         icon = new ImageIcon(getClass().getResource(MAINCHAR));
         xMultiplier = Math.random()*2;
         yMultiplier = Math.random()*2;
         status = 0;
         int z = (int)(Math.random()*3);
         if (z == 0)
+        {
             age = "Normal";
-        else if (z == 1)
+            icon = new ImageIcon(getClass().getResource(Bigchar));
+        }
+        else { if (z == 1){
+        
             age = "Kid";
-        else if (z == 2)
+            icon = new ImageIcon(getClass().getResource(Smallchar));
+        }
+        else { if (z == 2)
+        {
             age = "Old";
+            icon = new ImageIcon(getClass().getResource(Oldchar));
+        }}}
         speed();
     }
     
