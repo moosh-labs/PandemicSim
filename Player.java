@@ -80,23 +80,23 @@ public class Player extends Globalpositioning
     public void update(){
         if (y > 980)
             {
-                yMultiplier = -1*(Math.random()*2+1);
-                xMultiplier = Math.random()*4-2;
+                yMultiplier = -0.5*(Math.random());
+                xMultiplier = Math.random()*2-1.;
             }
         else if (y<0)
             {
-                yMultiplier = 1*(Math.random()*2+1);
-                xMultiplier = Math.random()*4-2;
+                yMultiplier = 0.5*(Math.random());
+                xMultiplier = Math.random()*2-1;
             }
         if (x > 1820)
             {
-                xMultiplier = -1*(Math.random()*2+1);
-                yMultiplier = Math.random()*4-2;
+                xMultiplier = -0.5*(Math.random());
+                yMultiplier = Math.random()*2-1;
             }
         else if (x<0)
             {
-                xMultiplier = 1*(Math.random()*2+1);
-                yMultiplier = Math.random()*4-2;
+                xMultiplier = 0.5*(Math.random());
+                yMultiplier = Math.random()*2-1;
             }
         if (xMultiplier<0 && xMultiplier>-1)
             xMultiplier = -1;
@@ -115,23 +115,23 @@ public class Player extends Globalpositioning
 
         if (bounce == 0)
             {
-                yMultiplier = -1*(Math.random()*2+1);
-                xMultiplier = Math.random()*4-2;
+                yMultiplier = -0.5*(Math.random());
+                xMultiplier = Math.random()*2-1;
             }
         else{ if (bounce == 1)
             {
-                yMultiplier = 1*(Math.random()*2+1);
-                xMultiplier = Math.random()*4-2;
+                yMultiplier = 0.5*(Math.random());
+                xMultiplier = Math.random()*2-1;
             }
         else{ if (bounce == 2)
             {
-                xMultiplier = -1*(Math.random()*2+1);
-                yMultiplier = Math.random()*4-2;
+                xMultiplier = -0.5*(Math.random());
+                yMultiplier = Math.random()*2-1;
             }
         else{ if (bounce == 3)
             {
-                xMultiplier = 1*(Math.random()*2+1);
-                yMultiplier = Math.random()*4-2;
+                xMultiplier = 0.5*(Math.random());
+                yMultiplier = Math.random()*2-1;
             }}}}
         x = x + xMultiplier;
         y = y + yMultiplier;
