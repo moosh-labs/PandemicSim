@@ -14,6 +14,7 @@ public class Player extends Globalpositioning
     private String infectadult = "/infectedadult.png";
     private String infectchild = "/infectedchild.png"; 
     private String dead = "/deaded.png";
+    private int moo;
 
     public Player(double x, double y){
         super(x, y);
@@ -21,6 +22,7 @@ public class Player extends Globalpositioning
         String Smallchar = "/Childsim.png";
         String Bigchar = "/Adultsim.png";
         String Oldchar = "/Eldersim.png";
+        int moo = 0;
 
         icon = new ImageIcon(getClass().getResource(MAINCHAR));
         xMultiplier = Math.random()*2;
@@ -49,6 +51,7 @@ public class Player extends Globalpositioning
         speed();
     }
 
+    
     public void speed()
     {
         double num = Math.random();
@@ -71,6 +74,7 @@ public class Player extends Globalpositioning
     }
 
     public void update(boolean map){
+        if (moo !=78)
         if (!map)
         {
             if (y > 980)
@@ -139,8 +143,9 @@ public class Player extends Globalpositioning
         }
     }
 
+    
     public void update(int bounce){
-
+        if(moo != 78)
         if (bounce == 0)
         {
             yMultiplier = -0.5*(Math.random());
@@ -191,6 +196,7 @@ public class Player extends Globalpositioning
                         icon = new ImageIcon(getClass().getResource(dead));
                         xMultiplier = 0;
                         yMultiplier = 0;
+                        moo = 78;
                         status = 2;
                         return true;
                     }
@@ -200,6 +206,7 @@ public class Player extends Globalpositioning
                         icon = new ImageIcon(getClass().getResource(dead));
                         xMultiplier = 0;
                         yMultiplier = 0;
+                        moo = 78;
                         status = 2;
                         return true;
                     }
@@ -209,6 +216,7 @@ public class Player extends Globalpositioning
                         icon = new ImageIcon(getClass().getResource(dead));
                         xMultiplier = 0;
                         yMultiplier = 0;
+                        moo = 78;
                         status = 2;
                         return true;
                     }
