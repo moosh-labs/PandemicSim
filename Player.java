@@ -161,16 +161,19 @@ public class Player extends Globalpositioning
                 if(age == "Old"){
                    if(Math.random() < 0.030){
                     icon = new ImageIcon(getClass().getResource(dead));
+                    status = 2;
                    }
                 }
                 if(age == "Normal"){
                    if(Math.random() < 0.015){
                     icon = new ImageIcon(getClass().getResource(dead));
+                    status = 2;
                     }
                 }
                 if(age == "Kid"){
                    if(Math.random() < 0.005){
                     icon = new ImageIcon(getClass().getResource(dead));
+                    status = 2;
                     }
                 }
             }

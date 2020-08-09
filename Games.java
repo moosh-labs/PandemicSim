@@ -177,8 +177,10 @@ public class Games extends JPanel implements ActionListener{
                 }
 
             }
+         if(protag.get(i).getStatus() == 1){
+                protag.get(i).death();
         }
-
+    }
         repaint();
     }
 }
