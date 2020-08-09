@@ -3,9 +3,10 @@ import java.awt.*;
 import java.awt.*;
 import java.util.*;
 import javax.swing.JFrame;
-public class MAINRUN{
+public class MAINRUN extends Applet
+{
 
-    public static void main(String args[])
+    public static void init(String args[])
     {
         JFrame frame = new JFrame();
         frame.pack();
