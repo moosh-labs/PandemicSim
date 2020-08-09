@@ -34,14 +34,16 @@ public class Games extends JPanel implements ActionListener{
     private int kidsDead;
     private int adultsDead;
     private int oldDead;
-    public Games(int numOfPeople, int totalNumOfInfected, boolean social, double percento){
+    private boolean map;
+    
+    public Games(int numOfPeople, int totalNumOfInfected, boolean social, double percento, boolean map){
         setFocusable(true);
         gametimer = new Timer(150, this);
         gametimer.start();
         this.social = social;
         protag = new ArrayList();
         this.backgr = new ImageIcon(getClass().getResource(background));
-        addPeople(numOfPeople);
+        
         this.percento = percento;
         kidsInfected = 0;
         adultsInfected = 0;
@@ -52,10 +54,12 @@ public class Games extends JPanel implements ActionListener{
         kidsDead = 0;
         adultsDead = 0;
         oldDead = 0;
-
+        this.map = map;
+        
         totalHealthy = numOfPeople - totalNumOfInfected;
         this.totalNumOfInfected = totalNumOfInfected;
         totalDead = 0;
+        addPeople(numOfPeople);
     }
 
     public void addPeople(int num)
@@ -66,10 +70,14 @@ public class Games extends JPanel implements ActionListener{
             int y = (int)(Math.random()*970+5);
             protag.add(new Player(x,y));
         }
-        if(totalNumOfInfected !=0)
+        System.out.println("There's hope for you");
+        if(totalNumOfInfected != 0)
+        {
+            System.out.println("There's no hope for you private");
             for (int a = 0; a<totalNumOfInfected; a++)
             {
                 int b = (int)(Math.random()*protag.size());
+                System.out.println("There's hope for you private");
                 if (protag.get(b).getStatus() == 1)
                     a--;
                 else {protag.get(b).setStatus();
@@ -80,7 +88,7 @@ public class Games extends JPanel implements ActionListener{
                     else if (protag.get(b).getAge().equals("Old"))
                         oldInfected++;
                 }
-            }
+            }}
 
     }
 
