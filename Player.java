@@ -141,7 +141,7 @@ public class Player extends Globalpositioning
     {
         status = 1;
         if(age == "Normal")
-        icon = new ImageIcon(getClass().getResource(infectold));
+            icon = new ImageIcon(getClass().getResource(infectold));
         else{ if(age == "Kid")
         {
             icon = new ImageIcon(getClass().getResource(infectchild));
@@ -156,7 +156,7 @@ public class Player extends Globalpositioning
     
     public boolean death(){
         long start = System.currentTimeMillis();
-        while (System.currentTimeMillis()-start<1000){
+        while (System.currentTimeMillis()-start<10){
             if(status == 1){
                 if(age == "Old"){
                    if(Math.random() < 0.000000010){

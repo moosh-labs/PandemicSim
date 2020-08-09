@@ -34,14 +34,16 @@ public class Games extends JPanel implements ActionListener{
     private int kidsDead;
     private int adultsDead;
     private int oldDead;
-    public Games(int numOfPeople, int totalNumOfInfected, boolean social, double percento){
+    private boolean map;
+
+    public Games(int numOfPeople, int totalNumOfInfected, boolean social, double percento, boolean map){
         setFocusable(true);
-        gametimer = new Timer(150, this);
+        gametimer = new Timer(10, this);
         gametimer.start();
         this.social = social;
         protag = new ArrayList();
         this.backgr = new ImageIcon(getClass().getResource(background));
-        addPeople(numOfPeople);
+
         this.percento = percento;
         kidsInfected = 0;
         adultsInfected = 0;
@@ -52,10 +54,12 @@ public class Games extends JPanel implements ActionListener{
         kidsDead = 0;
         adultsDead = 0;
         oldDead = 0;
+        this.map = map;
 
         totalHealthy = numOfPeople - totalNumOfInfected;
         this.totalNumOfInfected = totalNumOfInfected;
         totalDead = 0;
+        addPeople(numOfPeople);
     }
 
     public void addPeople(int num)
@@ -63,10 +67,12 @@ public class Games extends JPanel implements ActionListener{
         for(int i = 0; i<num; i++)
         {
             int x = (int)(Math.random()*1810+5);
+            
             int y = (int)(Math.random()*970+5);
             protag.add(new Player(x,y));
         }
-        if(totalNumOfInfected !=0)
+        if(totalNumOfInfected != 0)
+        {
             for (int a = 0; a<totalNumOfInfected; a++)
             {
                 int b = (int)(Math.random()*protag.size());
@@ -81,6 +87,7 @@ public class Games extends JPanel implements ActionListener{
                         oldInfected++;
                 }
             }
+        }
 
     }
 
@@ -263,8 +270,30 @@ public class Games extends JPanel implements ActionListener{
                 }
 
             }
-            
+            if(protag.get(i).getStatus() == 1){
+                if (protag.get(i).death())
+                {totalNumOfInfected--;
+                    if (protag.get(i).getAge().equals("Kid"))
+                    {
+                        kidsInfected--;
+                        kidsDead++;
+                    }
+                    else if (protag.get(i).getAge().equals("Normal"))
+                    {
+                        adultsInfected--;
+                        adultsDead++;
+                    }
+                    else if (protag.get(i).getAge().equals("Old"))
+                    {
+                        oldInfected--;
+                        oldDead++;
+                    }
+                    totalDead++;
+                }
+            }
         }
+        
+        
         for (int i = 0; i<protag.size(); i++)
         {
             if (protag.get(i).getStatus() == 0)
