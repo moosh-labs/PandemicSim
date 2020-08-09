@@ -22,15 +22,17 @@ public class Games extends JPanel implements ActionListener{
     private boolean social;
     private TimeUnit time;
     private int tim;
-    public Games(int numOfPeople, int numOfInfected, boolean social){
+    private double percent;
+    public Games(int numOfPeople, int numOfInfected, boolean social,double percent){
         setFocusable(true);
-        gametimer = new Timer(50, this);
+        gametimer = new Timer(150, this);
         gametimer.start();
         this.social = social;
         protag = new ArrayList();
         this.numOfInfected = numOfInfected;
         this.backgr = new ImageIcon(getClass().getResource(background));
         addPeople(numOfPeople);
+        this.percent = percent;
         tim = 0;
     }
 
@@ -81,23 +83,23 @@ public class Games extends JPanel implements ActionListener{
     }
 
     public void distancesocial(){
-        if (!social){
+
+        if (!social)
+        {
             for(int i = 0; i<protag.size(); i++)
             {
                 protag.get(i).update();
-            }}
+            }
+        }
 
         else {
-            for(int i = 0; i<protag.size(); i++)
+            for(int i = 0; i<protag.size()*(percent/100); i++)
             {
-                System.out.println("There's hope for you private");
-                System.out.println("hope in the form of glorious combat");
                 for(int j = 0; j<protag.size(); j++)
                 {
                     if(j != i){
                         if ((protag.get(i).getX()-protag.get(j).getX())<6&&(protag.get(i).getX()-protag.get(j).getX())>0)
                         {
-                            System.out.println(protag.get(i) + " " + protag.get(i).getX() + " " + protag.get(j) + " " + protag.get(j).getX());
                             protag.get(i).update(3);
                             protag.get(j).update(2);
                         }
@@ -125,12 +127,16 @@ public class Games extends JPanel implements ActionListener{
                         }
                     }
                 }
-            }}}
+            } 
+            for (int e = (int)(protag.size()*(percent/100)); e<protag.size(); e++)
+            {
+                protag.get(e).update();
+            }
+        }
+    }
 
     public void actionPerformed(ActionEvent e){
-        for(int i = 0; i<protag.size(); i++)
-            protag.get(i).update();
-           distancesocial();
+        distancesocial();
         for(int i = 0; i<protag.size(); i++)
         {
             for(int j = 0; j<protag.size(); j++)
