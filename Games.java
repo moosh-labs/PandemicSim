@@ -14,7 +14,7 @@ public class Games extends JPanel implements ActionListener{
 
     private static final long serialVersionUID = 1L;
 
-    private String background = "/Pancity1.png";
+    private String background = "/PANCITYHD.png";
     ImageIcon backgr;
     private int totalNumOfInfected;
     Timer gametimer;    
@@ -52,7 +52,7 @@ public class Games extends JPanel implements ActionListener{
         kidsDead = 0;
         adultsDead = 0;
         oldDead = 0;
-        
+
         totalHealthy = numOfPeople - totalNumOfInfected;
         this.totalNumOfInfected = totalNumOfInfected;
         totalDead = 0;
@@ -263,28 +263,7 @@ public class Games extends JPanel implements ActionListener{
                 }
 
             }
-            if(protag.get(i).getStatus() == 1){
-                if (protag.get(i).death())
-                {totalNumOfInfected--;
-                    if (protag.get(i).getAge().equals("Kid"))
-                    {
-                        kidsInfected--;
-                        kidsDead++;
-                    }
-                    else if (protag.get(i).getAge().equals("Normal"))
-                    {
-                        adultsInfected--;
-                        adultsDead++;
-                    }
-                    else if (protag.get(i).getAge().equals("Old"))
-                    {
-                        oldInfected--;
-                        oldDead++;
-                    }
-                    totalDead++;
-                }
-            }
-
+            
         }
         for (int i = 0; i<protag.size(); i++)
         {
@@ -308,4 +287,3 @@ public class Games extends JPanel implements ActionListener{
         repaint();
     }
 }
-
