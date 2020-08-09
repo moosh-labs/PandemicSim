@@ -154,7 +154,7 @@ public class Player extends Globalpositioning
     }
     }
     
-    public void death(){
+    public boolean death(){
         long start = System.currentTimeMillis();
         while (System.currentTimeMillis()-start<1000){
             if(status == 1){
@@ -164,6 +164,7 @@ public class Player extends Globalpositioning
                     xMultiplier = 0;
                     yMultiplier = 0;
                     status = 2;
+                    return true;
                    }
                 }
                 if(age == "Normal"){
@@ -172,6 +173,7 @@ public class Player extends Globalpositioning
                     xMultiplier = 0;
                     yMultiplier = 0;
                     status = 2;
+                    return true;
                     }
                 }
                 if(age == "Kid"){
@@ -180,12 +182,19 @@ public class Player extends Globalpositioning
                     xMultiplier = 0;
                     yMultiplier = 0;
                     status = 2;
+                    return true;
                     }
                 }
             }
         }
+        return false;
     }
 
+    public String getAge()
+    {
+        return age;
+    }
+    
     public int getStatus()
     {
         return status;

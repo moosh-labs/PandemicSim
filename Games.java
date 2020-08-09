@@ -16,24 +16,46 @@ public class Games extends JPanel implements ActionListener{
 
     private String background = "/Pancity1.png";
     ImageIcon backgr;
-    private int numOfInfected;
+    private int totalNumOfInfected;
     Timer gametimer;    
     List <Player> protag;
     private boolean social;
     private TimeUnit time;
-    private int tim;
     private double percento;
-    public Games(int numOfPeople, int numOfInfected, boolean social, double percento){
+    private int kidsInfected;
+    private int adultsInfected;
+    private int oldInfected;
+    private int totalHealthy;
+    private int kidsHealthy;
+    private int adultsHealthy;
+    private int oldHealthy;
+
+    private int totalDead;
+    private int kidsDead;
+    private int adultsDead;
+    private int oldDead;
+    public Games(int numOfPeople, int totalNumOfInfected, boolean social, double percento){
         setFocusable(true);
         gametimer = new Timer(150, this);
         gametimer.start();
         this.social = social;
         protag = new ArrayList();
-        this.numOfInfected = numOfInfected;
         this.backgr = new ImageIcon(getClass().getResource(background));
         addPeople(numOfPeople);
         this.percento = percento;
-        tim = 0;
+        kidsInfected = 0;
+        adultsInfected = 0;
+        oldInfected = 0;
+        kidsHealthy = 0;
+        adultsHealthy = 0;
+        oldHealthy = 0;
+        kidsDead = 0;
+        adultsDead = 0;
+        oldDead = 0;
+        
+        totalHealthy = numOfPeople - totalNumOfInfected;
+        this.totalNumOfInfected = totalNumOfInfected;
+        totalDead = 0;
     }
 
     public void addPeople(int num)
@@ -44,14 +66,19 @@ public class Games extends JPanel implements ActionListener{
             int y = (int)(Math.random()*970+5);
             protag.add(new Player(x,y));
         }
-        if(numOfInfected !=0)
-            for (int a = 0; a<numOfInfected; a++)
+        if(totalNumOfInfected !=0)
+            for (int a = 0; a<totalNumOfInfected; a++)
             {
                 int b = (int)(Math.random()*protag.size());
                 if (protag.get(b).getStatus() == 1)
                     a--;
                 else {protag.get(b).setStatus();
-
+                    if (protag.get(b).getAge().equals("Kid"))
+                        kidsInfected++;
+                    else if (protag.get(b).getAge().equals("Normal"))
+                        adultsInfected++;
+                    else if (protag.get(b).getAge().equals("Old"))
+                        oldInfected++;
                 }
             }
 
@@ -135,6 +162,11 @@ public class Games extends JPanel implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
         distancesocial();
+        int tempKid = 0;
+        int tempAdult = 0;
+        int tempOld = 0;
+        int tempHealthy = 0;
+
         for(int i = 0; i<protag.size(); i++)
         {
             for(int j = 0; j<protag.size(); j++)
@@ -147,58 +179,133 @@ public class Games extends JPanel implements ActionListener{
                     if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<5) //3 should change depending on the virus, edit later
                     {
                         if (z<0.004)
-                            {
-                                protag.get(i).setStatus();
-                                numOfInfected++;
-                            }
+                        {
+                            protag.get(i).setStatus();
+                            totalNumOfInfected++;
+                            if (protag.get(i).getAge().equals("Kid"))
+                                kidsInfected++;
+                            else if (protag.get(i).getAge().equals("Normal"))
+                                adultsInfected++;
+                            else if (protag.get(i).getAge().equals("Old"))
+                                oldInfected++;
+                        }
                     }
                     else if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<10) //3 should change depending on the virus, edit later
                     {
                         if (z<0.003)
-                            {
-                                protag.get(i).setStatus();
-                                numOfInfected++;
-                            }
+                        {
+                            protag.get(i).setStatus();
+                            totalNumOfInfected++;
+                            if (protag.get(i).getAge().equals("Kid"))
+                                kidsInfected++;
+                            else if (protag.get(i).getAge().equals("Normal"))
+                                adultsInfected++;
+                            else if (protag.get(i).getAge().equals("Old"))
+                                oldInfected++;
+                        }
                     }
                     else if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<20) //3 should change depending on the virus, edit later
                     {
                         if (z<0.002)
-                            {
-                                protag.get(i).setStatus();
-                                numOfInfected++;
-                            }
+                        {
+                            protag.get(i).setStatus();
+                            totalNumOfInfected++;
+                            if (protag.get(i).getAge().equals("Kid"))
+                                kidsInfected++;
+                            else if (protag.get(i).getAge().equals("Normal"))
+                                adultsInfected++;
+                            else if (protag.get(i).getAge().equals("Old"))
+                                oldInfected++;
+                        }
                     }
                     if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<5) //3 should change depending on the virus, edit later
                     {
                         if (z<0.004)
-                            {
-                                protag.get(i).setStatus();
-                                numOfInfected++;
-                            }
+                        {
+                            protag.get(i).setStatus();
+                            totalNumOfInfected++;
+                            if (protag.get(i).getAge().equals("Kid"))
+                                kidsInfected++;
+                            else if (protag.get(i).getAge().equals("Normal"))
+                                adultsInfected++;
+                            else if (protag.get(i).getAge().equals("Old"))
+                                oldInfected++;
+                        }
                     }
                     else if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<10) //3 should change depending on the virus, edit later
                     {
                         if (z<0.003)
-                            {
-                                protag.get(i).setStatus();
-                                numOfInfected++;
-                            }
+                        {
+                            protag.get(i).setStatus();
+                            totalNumOfInfected++;
+                            if (protag.get(i).getAge().equals("Kid"))
+                                kidsInfected++;
+                            else if (protag.get(i).getAge().equals("Normal"))
+                                adultsInfected++;
+                            else if (protag.get(i).getAge().equals("Old"))
+                                oldInfected++;
+                        }
                     }
                     else if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<20) //3 should change depending on the virus, edit later
                     {
                         if (z<0.002)
-                            {
-                                protag.get(i).setStatus();
-                                numOfInfected++;
-                            }
+                        {
+                            protag.get(i).setStatus();
+                            totalNumOfInfected++;
+                            if (protag.get(i).getAge().equals("Kid"))
+                                kidsInfected++;
+                            else if (protag.get(i).getAge().equals("Normal"))
+                                adultsInfected++;
+                            else if (protag.get(i).getAge().equals("Old"))
+                                oldInfected++;
+                        }
                     }
                 }
 
             }
-         if(protag.get(i).getStatus() == 1){
-                protag.get(i).death();
+            if(protag.get(i).getStatus() == 1){
+                if (protag.get(i).death())
+                {totalNumOfInfected--;
+                    if (protag.get(i).getAge().equals("Kid"))
+                    {
+                        kidsInfected--;
+                        kidsDead++;
+                    }
+                    else if (protag.get(i).getAge().equals("Normal"))
+                    {
+                        adultsInfected--;
+                        adultsDead++;
+                    }
+                    else if (protag.get(i).getAge().equals("Old"))
+                    {
+                        oldInfected--;
+                        oldDead++;
+                    }
+                    totalDead++;
+                }
+            }
+
         }
-    }
+        for (int i = 0; i<protag.size(); i++)
+        {
+            if (protag.get(i).getStatus() == 0)
+            {
+                if (protag.get(i).getAge().equals("Kid"))
+                    tempKid++;
+                else if (protag.get(i).getAge().equals("Normal"))
+                    tempAdult++;
+                else if (protag.get(i).getAge().equals("Old"))
+                    tempOld++;
+                tempHealthy++;
+            }
+
+        }
+        kidsHealthy = tempKid;
+        adultsHealthy = tempAdult;
+        oldHealthy = tempOld;
+        totalHealthy = tempHealthy;
+
         repaint();
     }
 }
+
