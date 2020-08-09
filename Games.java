@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Games extends JPanel implements ActionListener{
 
-    private static final long serialVersionUID = 1L;
+    private final long serialVersionUID = 1L;
 
     private String background;
     ImageIcon backgr;
@@ -108,6 +108,15 @@ public class Games extends JPanel implements ActionListener{
 
     }
 
+    public int getTotalSick()
+    {
+        return totalNumOfInfected;
+    }
+    public int getTotalHealthy()
+    {
+        return totalHealthy;
+    }
+    
     public void paint(Graphics carrot){
         super.paint(carrot);
 
