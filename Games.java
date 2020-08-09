@@ -1,3 +1,4 @@
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
@@ -7,6 +8,7 @@ import javax.swing.Timer;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Games extends JPanel implements ActionListener{
 
@@ -18,15 +20,18 @@ public class Games extends JPanel implements ActionListener{
     Timer gametimer;    
     List <Player> protag;
     private boolean social;
+    private TimeUnit time;
+    private int tim;
     public Games(int numOfPeople, int numOfInfected, boolean social){
         setFocusable(true);
-        gametimer = new Timer(10, this);
+        gametimer = new Timer(50, this);
         gametimer.start();
         this.social = social;
         protag = new ArrayList();
         this.numOfInfected = numOfInfected;
         this.backgr = new ImageIcon(getClass().getResource(background));
         addPeople(numOfPeople);
+        tim = 0;
     }
 
     public void addPeople(int num)
@@ -39,6 +44,7 @@ public class Games extends JPanel implements ActionListener{
             /** can make 2 separate lists, one with healthy, one with infected, 
              */
         }
+        if(numOfInfected !=0)
         for (int a = 0; a<numOfInfected; a++)
         {
             int b = (int)(Math.random()*protag.size());
@@ -48,6 +54,8 @@ public class Games extends JPanel implements ActionListener{
 
             }
         }
+        
+        
     }
 
     public void getInfected1()
@@ -66,7 +74,7 @@ public class Games extends JPanel implements ActionListener{
         {
             protag.get(i).draw(carrot2d);
         }
-
+        
     }
 
     public Image getBackgroundImage(){
@@ -80,8 +88,7 @@ public class Games extends JPanel implements ActionListener{
         for(int i = 0; i<protag.size(); i++)
             protag.get(i).update();
             
-        /**
-         * if (!social)
+        if (!social)
             for(int i = 0; i<protag.size(); i++)
             {
                 protag.get(i).update();
@@ -112,19 +119,16 @@ public class Games extends JPanel implements ActionListener{
                             protag.get(i).update(0);
                             protag.get(j).update(1);
                         }
-                    protag.get(i).update();
                 }
             }
         }
-         * 
-         */
         for(int i = 0; i<protag.size(); i++)
         {
             for(int j = 0; i<protag.size(); i++)
             {
                 if (protag.get(i).getStatus() == 1)
                     break;
-                else 
+                else if (protag.get(j).getStatus() == 1)
                 {
                     double z = Math.random();//this is the likelihood of getting infected, depends on virsu, edit later
                     if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<15) //3 should change depending on the virus, edit later
