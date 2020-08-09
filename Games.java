@@ -101,12 +101,32 @@ public class Games extends JPanel implements ActionListener{
                 else 
                 {
                     double z = Math.random();//this is the likelihood of getting infected, depends on virsu, edit later
-                    if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<3) //3 should change depending on the virus, edit later
+                    if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<15) //3 should change depending on the virus, edit later
+                    {
+                        if (z<0.4)
+                            protag.get(i).setStatus();
+                    }
+                    else if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<30) //3 should change depending on the virus, edit later
+                    {
+                        if (z<0.3)
+                            protag.get(i).setStatus();
+                    }
+                    else if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<45) //3 should change depending on the virus, edit later
                     {
                         if (z<0.2)
                             protag.get(i).setStatus();
                     }
-                    if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<3) //3 should change depending on the virus, edit later
+                    if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<15) //3 should change depending on the virus, edit later
+                    {
+                        if (z<0.4)
+                            protag.get(i).setStatus();
+                    }
+                    else if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<30) //3 should change depending on the virus, edit later
+                    {
+                        if (z<0.3)
+                            protag.get(i).setStatus();
+                    }
+                    else if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<45) //3 should change depending on the virus, edit later
                     {
                         if (z<0.2)
                             protag.get(i).setStatus();
