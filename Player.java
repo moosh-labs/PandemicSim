@@ -15,6 +15,7 @@ public class Player extends Globalpositioning
     private String infectchild = "/infectedchild.png"; 
     private String dead = "/deaded.png";
     private int moo;
+    private boolean bord;
 
     public Player(double x, double y){
         super(x, y);
@@ -23,7 +24,9 @@ public class Player extends Globalpositioning
         String Bigchar = "/Adultsim.png";
         String Oldchar = "/Eldersim.png";
         int moo = 0;
-
+        if (y<400)
+            bord = true;
+        else bord = false;
         icon = new ImageIcon(getClass().getResource(MAINCHAR));
         xMultiplier = Math.random()*2;
         yMultiplier = Math.random()*2;
@@ -51,7 +54,6 @@ public class Player extends Globalpositioning
         speed();
     }
 
-    
     public void speed()
     {
         double num = Math.random();
@@ -73,99 +75,97 @@ public class Player extends Globalpositioning
         }
     }
 
-    public void update(boolean map){
-        if (moo !=78)
-        if (!map)
-        {
-            if (y > 980)
-            {
-                yMultiplier = -2*(Math.random());
-                xMultiplier = Math.random()*5-1.;
-            }
-            else if (y<0)
-            {
-                yMultiplier = 2*(Math.random());
-                xMultiplier = Math.random()*5-1;
-            }
-            if (x > 1820)
-            {
-                xMultiplier = -2*(Math.random());
-                yMultiplier = Math.random()*5-1;
-            }
-            else if (x<0)
-            {
-                xMultiplier = 2*(Math.random());
-                yMultiplier = Math.random()*5-1;
-            }
-            if (xMultiplier<0 && xMultiplier>-1)
-                xMultiplier = -1;
-            else if (xMultiplier > 0 && xMultiplier<1)
-                xMultiplier = 1;
-            if (yMultiplier<0 && yMultiplier>-1)
-                yMultiplier = -1;
-            else if (yMultiplier > 0 && yMultiplier<1)
-                yMultiplier = 1;
-            x = x + xMultiplier;
-            y = y + yMultiplier;
-        }
-        else 
-        {
-            if (y > 980 || y>500 && (x>1025 || x<950))
-            {
-                yMultiplier = -2*(Math.random());
-                xMultiplier = Math.random()*5-1.;
-            }
-            else if (y<0 || y<400 && (x>1025 || x<950))
-            {
-                yMultiplier = 2*(Math.random());
-                xMultiplier = Math.random()*5-1;
-            }
-            if (x > 1820 || x>975 && (y>550 || y<475))
-            {
-                xMultiplier = -2*(Math.random());
-                yMultiplier = Math.random()*5-1;
-            }
-            else if (x<0 || x<900 && (y>550 || y<475))
-            {
-                xMultiplier = 2*(Math.random());
-                yMultiplier = Math.random()*2-1;
-            }
-            if (xMultiplier<0 && xMultiplier>-1)
-                xMultiplier = -1;
-            else if (xMultiplier > 0 && xMultiplier<1)
-                xMultiplier = 1;
-            if (yMultiplier<0 && yMultiplier>-1)
-                yMultiplier = -1;
-            else if (yMultiplier > 0 && yMultiplier<1)
-                yMultiplier = 1;
-            x = x + xMultiplier;
-            y = y + yMultiplier;
-        }
-    }
-
-    
-    public void update(int bounce){
-        if(moo != 78)
-        if (bounce == 0)
-        {
-            yMultiplier = -0.5*(Math.random());
-            xMultiplier = Math.random()*2-1;
-        }
-        else{ if (bounce == 1)
-            {
-                yMultiplier = 0.5*(Math.random());
-                xMultiplier = Math.random()*2-1;
-            }
-            else{ if (bounce == 2)
+    public void update(){
+        if(moo != 78){
+            if (bord){
+                if (y > 300)
+                {
+                    yMultiplier = -0.5*(Math.random());
+                    xMultiplier = Math.random()*2-1.;
+                }
+                else if (y<0)
+                {
+                    yMultiplier = 0.5*(Math.random());
+                    xMultiplier = Math.random()*2-1;
+                }
+                if (x > 1800)
                 {
                     xMultiplier = -0.5*(Math.random());
                     yMultiplier = Math.random()*2-1;
                 }
-                else{ if (bounce == 3)
+                else if (x<700)
+                {
+                    xMultiplier = 0.5*(Math.random());
+                    yMultiplier = Math.random()*2-1;
+                }
+                if (xMultiplier<0 && xMultiplier>-1)
+                    xMultiplier = -1;
+                else if (xMultiplier > 0 && xMultiplier<1)
+                    xMultiplier = 1;
+                if (yMultiplier<0 && yMultiplier>-1)
+                    yMultiplier = -1;
+                else if (yMultiplier > 0 && yMultiplier<1)
+                    yMultiplier = 1;
+                x = x + xMultiplier;
+                y = y + yMultiplier;
+            }
+            if (!bord){
+                if (y > 950)
+                {
+                    yMultiplier = -0.5*(Math.random());
+                    xMultiplier = Math.random()*2-1.;
+                }
+                else if (y<600)
+                {
+                    yMultiplier = 0.5*(Math.random());
+                    xMultiplier = Math.random()*2-1;
+                }
+                if (x > 1400)
+                {
+                    xMultiplier = -0.5*(Math.random());
+                    yMultiplier = Math.random()*2-1;
+                }
+                else if (x<0)
+                {
+                    xMultiplier = 0.5*(Math.random());
+                    yMultiplier = Math.random()*2-1;
+                }
+                if (xMultiplier<0 && xMultiplier>-1)
+                    xMultiplier = -1;
+                else if (xMultiplier > 0 && xMultiplier<1)
+                    xMultiplier = 1;
+                if (yMultiplier<0 && yMultiplier>-1)
+                    yMultiplier = -1;
+                else if (yMultiplier > 0 && yMultiplier<1)
+                    yMultiplier = 1;
+                x = x + xMultiplier;
+                y = y + yMultiplier;
+            }
+        }
+    }
+
+    public void update(int bounce){
+        if(moo != 78)
+            if (bounce == 0)
+            {
+                yMultiplier = -0.5*(Math.random());
+                xMultiplier = Math.random()*2-1;
+            }
+            else{ if (bounce == 1)
+                {
+                    yMultiplier = 0.5*(Math.random());
+                    xMultiplier = Math.random()*2-1;
+                }
+                else{ if (bounce == 2)
                     {
-                        xMultiplier = 0.5*(Math.random());
+                        xMultiplier = -0.5*(Math.random());
                         yMultiplier = Math.random()*2-1;
-                    }}}}
+                    }
+                    else{ if (bounce == 3)
+                        {
+                            xMultiplier = 0.5*(Math.random());
+                            yMultiplier = Math.random()*2-1;
+                        }}}}
         x = x + xMultiplier;
         y = y + yMultiplier;
     }
@@ -246,6 +246,11 @@ public class Player extends Globalpositioning
         return y;
     }
 
+    public boolean getBord()
+    {
+        return bord;
+    }
+    
     public void draw(Graphics2D carrot2d){
 
         carrot2d.drawImage(getPlayerImage(), (int)x, (int)y, null);

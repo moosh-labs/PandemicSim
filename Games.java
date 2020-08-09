@@ -13,7 +13,7 @@ public class Games extends JPanel implements ActionListener{
 
     private static final long serialVersionUID = 1L;
 
-    private String background = "/PANCITYHD.png";
+    private String background = "/Pansim_city_2_FORREAL.png";
     ImageIcon backgr;
     private int totalNumOfInfected;
     Timer gametimer;    
@@ -34,7 +34,9 @@ public class Games extends JPanel implements ActionListener{
     private int adultsDead;
     private int oldDead;
     private boolean map;
-
+    private int numPoor;
+    private int numRich;
+    
     public Games(int numOfPeople, int totalNumOfInfected, boolean social, double percento, boolean map){
         setFocusable(true);
         gametimer = new Timer(10, this);
@@ -54,7 +56,8 @@ public class Games extends JPanel implements ActionListener{
         adultsDead = 0;
         oldDead = 0;
         this.map = map;
-
+        numPoor = (int)(numOfPeople*.66666) + 1;
+        numRich = (int)(numOfPeople*.33333);
         totalHealthy = numOfPeople - totalNumOfInfected;
         this.totalNumOfInfected = totalNumOfInfected;
         totalDead = 0;
@@ -63,26 +66,19 @@ public class Games extends JPanel implements ActionListener{
 
     public void addPeople(int num)
     {
-        for(int i = 0; i<num; i++)
+        int r = 0;
+        for(int i = 0; i<numPoor; i++)
         {
-            int x = (int)(Math.random()*1810+5);
-            int y = (int)(Math.random()*970+5);
-            if (map)
-            {
-                double z = Math.random();
-                if (z<0.5)
-                {
-                    if (x<1020 && x>900)
-                        y = (int)(Math.random()*970+5);
-                    else y = (int)(Math.random()*75+475);
-                }
-                else 
-                {
-                    if (y<485 &&y>435)
-                        x = (int)(Math.random()*1810 + 5);
-                    else x = (int)(Math.random()*75 + 950);
-                }
-            }
+            int x = (int)(Math.random()*700+5);
+            
+            int y = (int)(Math.random()*350+600);
+            protag.add(new Player(x,y));
+        }
+        for (int j = 0; j<numRich; j++)
+        {
+            int x = (int)(Math.random()*700+700);
+            
+            int y = (int)(Math.random()*350);
             protag.add(new Player(x,y));
         }
         if(totalNumOfInfected != 0)
@@ -90,9 +86,9 @@ public class Games extends JPanel implements ActionListener{
             for (int a = 0; a<totalNumOfInfected; a++)
             {
                 int b = (int)(Math.random()*protag.size());
-                if (protag.get(b).getStatus() == 1)
+                if (protag.get(b).getStatus() == 1 || protag.get(b).getStatus() == 2)
                     a--;
-                else {protag.get(b).setStatus();
+                else  {protag.get(b).setStatus();
                     if (protag.get(b).getAge().equals("Kid"))
                         kidsInfected++;
                     else if (protag.get(b).getAge().equals("Normal"))
@@ -134,7 +130,7 @@ public class Games extends JPanel implements ActionListener{
         {
             for(int i = 0; i<protag.size(); i++)
             {
-                protag.get(i).update(map);
+                protag.get(i).update();
             }
         }
 
@@ -144,39 +140,39 @@ public class Games extends JPanel implements ActionListener{
                 for(int j = 0; j<protag.size(); j++)
                 {
                     if(j != i){
-                        if ((protag.get(i).getX()-protag.get(j).getX())<6&&(protag.get(i).getX()-protag.get(j).getX())>0)
+                        if ((protag.get(i).getX()-protag.get(j).getX())<2&&(protag.get(i).getX()-protag.get(j).getX())>0)
                         {
                             protag.get(i).update(3);
                             protag.get(j).update(2);
                         }
                         else{
-                            if (protag.get(i).getX()-protag.get(j).getX()>-6&&protag.get(i).getX()-protag.get(j).getX()<0)
+                            if (protag.get(i).getX()-protag.get(j).getX()>-2&&protag.get(i).getX()-protag.get(j).getX()<0)
                             {
                                 protag.get(i).update(2);
                                 protag.get(j).update(3);
                             }
                             else{
-                                if (protag.get(i).getY()-protag.get(j).getY()<6&&protag.get(i).getY()-protag.get(j).getY()>0)
+                                if (protag.get(i).getY()-protag.get(j).getY()<2&&protag.get(i).getY()-protag.get(j).getY()>0)
                                 {
                                     protag.get(i).update(1);
                                     protag.get(j).update(0);
                                 }
                                 else{
-                                    if (protag.get(i).getY()-protag.get(j).getY()>-6&&protag.get(i).getY()-protag.get(j).getY()<0)
+                                    if (protag.get(i).getY()-protag.get(j).getY()>-2&&protag.get(i).getY()-protag.get(j).getY()<0)
                                     {
                                         protag.get(i).update(0);
                                         protag.get(j).update(1);
                                     }
-                                    protag.get(i).update(map);
+                                    protag.get(i).update();
                                 }
                             }
                         }
                     }
                 }
             } 
-            for (int e = (protag.size()); e<protag.size(); e++)
+            for (int e = (int)(protag.size()*(percento/100)); e<protag.size(); e++)
             {
-                protag.get(e).update(map);
+                protag.get(e).update();
             }
         }
     }
@@ -306,7 +302,8 @@ public class Games extends JPanel implements ActionListener{
                 }
             }
         }
-
+        
+        
         for (int i = 0; i<protag.size(); i++)
         {
             if (protag.get(i).getStatus() == 0)
