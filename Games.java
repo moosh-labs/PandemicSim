@@ -67,8 +67,23 @@ public class Games extends JPanel implements ActionListener{
         for(int i = 0; i<num; i++)
         {
             int x = (int)(Math.random()*1810+5);
-            
             int y = (int)(Math.random()*970+5);
+            if (map)
+            {
+                double z = Math.random();
+                if (z<0.5)
+                {
+                    if (x<1020 && x>900)
+                        y = (int)(Math.random()*970+5);
+                    else y = (int)(Math.random()*75+475);
+                }
+                else 
+                {
+                    if (y<485 &&y>435)
+                        x = (int)(Math.random()*1810 + 5);
+                    else x = (int)(Math.random()*75 + 950);
+                }
+            }
             protag.add(new Player(x,y));
         }
         if(totalNumOfInfected != 0)
@@ -120,12 +135,12 @@ public class Games extends JPanel implements ActionListener{
         {
             for(int i = 0; i<protag.size(); i++)
             {
-                protag.get(i).update();
+                protag.get(i).update(map);
             }
         }
 
         else {
-            for(int i = 0; i<protag.size()*(percento/100); i++)
+            for(int i = 0; i<protag.size(); i++)
             {
                 for(int j = 0; j<protag.size(); j++)
                 {
@@ -153,16 +168,16 @@ public class Games extends JPanel implements ActionListener{
                                         protag.get(i).update(0);
                                         protag.get(j).update(1);
                                     }
-                                    protag.get(i).update();
+                                    protag.get(i).update(map);
                                 }
                             }
                         }
                     }
                 }
             } 
-            for (int e = (int)(protag.size()*(percento/100)); e<protag.size(); e++)
+            for (int e = (protag.size()); e<protag.size(); e++)
             {
-                protag.get(e).update();
+                protag.get(e).update(map);
             }
         }
     }
@@ -292,8 +307,7 @@ public class Games extends JPanel implements ActionListener{
                 }
             }
         }
-        
-        
+
         for (int i = 0; i<protag.size(); i++)
         {
             if (protag.get(i).getStatus() == 0)
