@@ -68,7 +68,6 @@ public class Player extends Globalpositioning
             yMultiplier *= 1;
             xMultiplier *= 1;
         }
-        
     }
 
     public void update(){
@@ -105,26 +104,28 @@ public class Player extends Globalpositioning
     }
     
     public void update(int bounce){
+        
+
         if (bounce == 0)
             {
                 yMultiplier = -1*(Math.random()*2+1);
                 xMultiplier = Math.random()*4-2;
             }
-        else if (bounce == 1)
+        else{ if (bounce == 1)
             {
                 yMultiplier = 1*(Math.random()*2+1);
                 xMultiplier = Math.random()*4-2;
             }
-        else if (bounce == 2)
+        else{ if (bounce == 2)
             {
                 xMultiplier = -1*(Math.random()*2+1);
                 yMultiplier = Math.random()*4-2;
             }
-        else if (bounce == 3)
+        else{ if (bounce == 3)
             {
                 xMultiplier = 1*(Math.random()*2+1);
                 yMultiplier = Math.random()*4-2;
-            }
+            }}}}
         x = x + xMultiplier;
         y = y + yMultiplier;
     }

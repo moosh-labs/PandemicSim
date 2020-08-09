@@ -45,17 +45,16 @@ public class Games extends JPanel implements ActionListener{
              */
         }
         if(numOfInfected !=0)
-        for (int a = 0; a<numOfInfected; a++)
-        {
-            int b = (int)(Math.random()*protag.size());
-            if (protag.get(b).getStatus() == 1)
-                a--;
-            else {protag.get(b).setStatus();
-            
+            for (int a = 0; a<numOfInfected; a++)
+            {
+                int b = (int)(Math.random()*protag.size());
+                if (protag.get(b).getStatus() == 1)
+                    a--;
+                else {protag.get(b).setStatus();
+
+                }
             }
-        }
-        
-        
+
     }
 
     public void getInfected1()
@@ -74,22 +73,22 @@ public class Games extends JPanel implements ActionListener{
         {
             protag.get(i).draw(carrot2d);
         }
-        
+
     }
 
     public Image getBackgroundImage(){
         return backgr.getImage();
     }
 
-    
     public void distancesocial(){
         if (social == false){
-             for(int i = 0; i<protag.size(); i++)
-             {
-                 protag.get(i).update();
-             }}
-        
+            for(int i = 0; i<protag.size(); i++)
+            {
+                protag.get(i).update();
+            }}
+
         else {
+<<<<<<< HEAD
              for(int i = 0; i<protag.size(); i++)
          {
                 for(int j = 1; j<protag.size(); j++)
@@ -124,11 +123,49 @@ public class Games extends JPanel implements ActionListener{
      }
          }}}
     
+=======
+            for(int i = 0; i<protag.size(); i++)
+            {
+                for(int j = 0; j<protag.size(); j++)
+                {
+                    if(j != i){
+                        if (protag.get(i).getX()-protag.get(j).getX()<25&&protag.get(i).getX()-protag.get(j).getX()>0)
+                        {
+                            System.out.println(protag.get(i) + " " + protag.get(i).getX() + " " + protag.get(j) + " " + protag.get(j).getX());
+                            protag.get(i).update(3);
+                            protag.get(j).update(2);
+                        }
+                        else{
+                            if (protag.get(i).getX()-protag.get(j).getX()>-25&&protag.get(i).getX()-protag.get(j).getX()<0)
+                            {
+                                protag.get(i).update(2);
+                                protag.get(j).update(3);
+                            }
+                            else{
+                                if (protag.get(i).getY()-protag.get(j).getY()<25&&protag.get(i).getY()-protag.get(j).getY()>0)
+                                {
+                                    protag.get(i).update(1);
+                                    protag.get(j).update(0);
+                                }
+                                else{
+                                    if (protag.get(i).getY()-protag.get(j).getY()>-25&&protag.get(i).getY()-protag.get(j).getY()<0)
+                                    {
+                                        protag.get(i).update(0);
+                                        protag.get(j).update(1);
+                                    }
+                                    protag.get(i).update();
+                                }
+                            }
+                        }
+                    }
+                }
+            }}}
+
+>>>>>>> 10910c64db70250ea6df51674a7e49fcc2d286d0
     public void actionPerformed(ActionEvent e){
         for(int i = 0; i<protag.size(); i++)
             protag.get(i).update();
-            
-        
+
         for(int i = 0; i<protag.size(); i++)
         {
             for(int j = 0; j<protag.size(); j++)
@@ -140,36 +177,36 @@ public class Games extends JPanel implements ActionListener{
                     double z = Math.random();//this is the likelihood of getting infected, depends on virus, edit later
                     if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<15) //3 should change depending on the virus, edit later
                     {
-                        if (z<0.4)
+                        if (z<0.004)
                             protag.get(i).setStatus();
                     }
                     else if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<30) //3 should change depending on the virus, edit later
                     {
-                        if (z<0.3)
+                        if (z<0.003)
                             protag.get(i).setStatus();
                     }
                     else if (Math.abs(protag.get(i).getX()-protag.get(j).getX())<45) //3 should change depending on the virus, edit later
                     {
-                        if (z<0.2)
+                        if (z<0.002)
                             protag.get(i).setStatus();
                     }
                     if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<15) //3 should change depending on the virus, edit later
                     {
-                        if (z<0.4)
+                        if (z<0.004)
                             protag.get(i).setStatus();
                     }
                     else if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<30) //3 should change depending on the virus, edit later
                     {
-                        if (z<0.3)
+                        if (z<0.003)
                             protag.get(i).setStatus();
                     }
                     else if (Math.abs(protag.get(i).getY()-protag.get(j).getY())<45) //3 should change depending on the virus, edit later
                     {
-                        if (z<0.2)
+                        if (z<0.002)
                             protag.get(i).setStatus();
                     }
                 }
-                
+
             }
         }
 
