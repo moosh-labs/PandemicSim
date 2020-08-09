@@ -75,74 +75,111 @@ public class Player extends Globalpositioning
         }
     }
 
-    public void update(){
+    public void update(boolean map){
+
         if(moo != 78){
-            if (bord){
-                if (y > 300)
-                {
-                    yMultiplier = -0.5*(Math.random());
-                    xMultiplier = Math.random()*2-1.;
+            if (map)
+            {
+                if (bord){
+                    if (y > 300)
+                    {
+                        yMultiplier = -0.5*(Math.random());
+                        xMultiplier = Math.random()*2-1.;
+                    }
+                    else if (y<0)
+                    {
+                        yMultiplier = 0.5*(Math.random());
+                        xMultiplier = Math.random()*2-1;
+                    }
+                    if (x > 1800)
+                    {
+                        xMultiplier = -0.5*(Math.random());
+                        yMultiplier = Math.random()*2-1;
+                    }
+                    else if (x<700)
+                    {
+                        xMultiplier = 0.5*(Math.random());
+                        yMultiplier = Math.random()*2-1;
+                    }
+                    if (xMultiplier<0 && xMultiplier>-1)
+                        xMultiplier = -1;
+                    else if (xMultiplier > 0 && xMultiplier<1)
+                        xMultiplier = 1;
+                    if (yMultiplier<0 && yMultiplier>-1)
+                        yMultiplier = -1;
+                    else if (yMultiplier > 0 && yMultiplier<1)
+                        yMultiplier = 1;
+                    x = x + xMultiplier;
+                    y = y + yMultiplier;
                 }
-                else if (y<0)
-                {
-                    yMultiplier = 0.5*(Math.random());
-                    xMultiplier = Math.random()*2-1;
+                if (!bord){
+                    if (y > 950)
+                    {
+                        yMultiplier = -0.5*(Math.random());
+                        xMultiplier = Math.random()*2-1.;
+                    }
+                    else if (y<600)
+                    {
+                        yMultiplier = 0.5*(Math.random());
+                        xMultiplier = Math.random()*2-1;
+                    }
+                    if (x > 1400)
+                    {
+                        xMultiplier = -0.5*(Math.random());
+                        yMultiplier = Math.random()*2-1;
+                    }
+                    else if (x<0)
+                    {
+                        xMultiplier = 0.5*(Math.random());
+                        yMultiplier = Math.random()*2-1;
+                    }
+                    if (xMultiplier<0 && xMultiplier>-1)
+                        xMultiplier = -1;
+                    else if (xMultiplier > 0 && xMultiplier<1)
+                        xMultiplier = 1;
+                    if (yMultiplier<0 && yMultiplier>-1)
+                        yMultiplier = -1;
+                    else if (yMultiplier > 0 && yMultiplier<1)
+                        yMultiplier = 1;
+                    x = x + xMultiplier;
+                    y = y + yMultiplier;
                 }
-                if (x > 1800)
-                {
-                    xMultiplier = -0.5*(Math.random());
-                    yMultiplier = Math.random()*2-1;
-                }
-                else if (x<700)
-                {
-                    xMultiplier = 0.5*(Math.random());
-                    yMultiplier = Math.random()*2-1;
-                }
-                if (xMultiplier<0 && xMultiplier>-1)
-                    xMultiplier = -1;
-                else if (xMultiplier > 0 && xMultiplier<1)
-                    xMultiplier = 1;
-                if (yMultiplier<0 && yMultiplier>-1)
-                    yMultiplier = -1;
-                else if (yMultiplier > 0 && yMultiplier<1)
-                    yMultiplier = 1;
-                x = x + xMultiplier;
-                y = y + yMultiplier;
             }
-            if (!bord){
+            else {
                 if (y > 950)
-                {
-                    yMultiplier = -0.5*(Math.random());
-                    xMultiplier = Math.random()*2-1.;
+                    {
+                        yMultiplier = -0.5*(Math.random());
+                        xMultiplier = Math.random()*2-1.;
+                    }
+                    else if (y<0)
+                    {
+                        yMultiplier = 0.5*(Math.random());
+                        xMultiplier = Math.random()*2-1;
+                    }
+                    if (x > 1810)
+                    {
+                        xMultiplier = -0.5*(Math.random());
+                        yMultiplier = Math.random()*2-1;
+                    }
+                    else if (x<0)
+                    {
+                        xMultiplier = 0.5*(Math.random());
+                        yMultiplier = Math.random()*2-1;
+                    }
+                    if (xMultiplier<0 && xMultiplier>-1)
+                        xMultiplier = -1;
+                    else if (xMultiplier > 0 && xMultiplier<1)
+                        xMultiplier = 1;
+                    if (yMultiplier<0 && yMultiplier>-1)
+                        yMultiplier = -1;
+                    else if (yMultiplier > 0 && yMultiplier<1)
+                        yMultiplier = 1;
+                    x = x + xMultiplier;
+                    y = y + yMultiplier;
                 }
-                else if (y<600)
-                {
-                    yMultiplier = 0.5*(Math.random());
-                    xMultiplier = Math.random()*2-1;
-                }
-                if (x > 1400)
-                {
-                    xMultiplier = -0.5*(Math.random());
-                    yMultiplier = Math.random()*2-1;
-                }
-                else if (x<0)
-                {
-                    xMultiplier = 0.5*(Math.random());
-                    yMultiplier = Math.random()*2-1;
-                }
-                if (xMultiplier<0 && xMultiplier>-1)
-                    xMultiplier = -1;
-                else if (xMultiplier > 0 && xMultiplier<1)
-                    xMultiplier = 1;
-                if (yMultiplier<0 && yMultiplier>-1)
-                    yMultiplier = -1;
-                else if (yMultiplier > 0 && yMultiplier<1)
-                    yMultiplier = 1;
-                x = x + xMultiplier;
-                y = y + yMultiplier;
             }
         }
-    }
+    
 
     public void update(int bounce){
         if(moo != 78)
@@ -250,7 +287,7 @@ public class Player extends Globalpositioning
     {
         return bord;
     }
-    
+
     public void draw(Graphics2D carrot2d){
 
         carrot2d.drawImage(getPlayerImage(), (int)x, (int)y, null);

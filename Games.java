@@ -13,7 +13,7 @@ public class Games extends JPanel implements ActionListener{
 
     private static final long serialVersionUID = 1L;
 
-    private String background = "/Pansim_city_2_FORREAL.png";
+    private String background;
     ImageIcon backgr;
     private int totalNumOfInfected;
     Timer gametimer;    
@@ -43,8 +43,10 @@ public class Games extends JPanel implements ActionListener{
         gametimer.start();
         this.social = social;
         protag = new ArrayList();
+        if (map)
+            background =  "/Pansim_city_2_FORREAL.png";
+        else background = "/PANCITYHD.png";
         this.backgr = new ImageIcon(getClass().getResource(background));
-
         this.percento = percento;
         kidsInfected = 0;
         adultsInfected = 0;
@@ -130,7 +132,7 @@ public class Games extends JPanel implements ActionListener{
         {
             for(int i = 0; i<protag.size(); i++)
             {
-                protag.get(i).update();
+                protag.get(i).update(map);
             }
         }
 
@@ -163,7 +165,7 @@ public class Games extends JPanel implements ActionListener{
                                         protag.get(i).update(0);
                                         protag.get(j).update(1);
                                     }
-                                    protag.get(i).update();
+                                    protag.get(i).update(map);
                                 }
                             }
                         }
