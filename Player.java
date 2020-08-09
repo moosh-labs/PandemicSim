@@ -52,14 +52,23 @@ public class Player extends Globalpositioning
     public void speed()
     {
         double num = Math.random();
-        if (num<0.5){
-            xMultiplier *= -1*num;
+        if (num<0.25){
+            xMultiplier *= -1;
             yMultiplier *= 1;
         }
-        if (num<0.5){
-            yMultiplier *= -1*num;
+        else if (num<0.5){
+            yMultiplier *= -1;
+            xMultiplier *= -1;
+        }
+        else if (num<0.75){
+            yMultiplier *= 1;
+            xMultiplier *= -1;
+        }
+        else {
+            yMultiplier *= 1;
             xMultiplier *= 1;
         }
+        
     }
 
     public void update(){
