@@ -35,15 +35,23 @@ public class Games extends JPanel implements ActionListener{
     private int adultsDead;
     private int oldDead;
     private boolean map;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> fa1917ef310455be7d61a1ed8ce6b2496071b5ee
     public Games(int numOfPeople, int totalNumOfInfected, boolean social, double percento, boolean map){
         setFocusable(true);
-        gametimer = new Timer(150, this);
+        gametimer = new Timer(10, this);
         gametimer.start();
         this.social = social;
         protag = new ArrayList();
         this.backgr = new ImageIcon(getClass().getResource(background));
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> fa1917ef310455be7d61a1ed8ce6b2496071b5ee
         this.percento = percento;
         kidsInfected = 0;
         adultsInfected = 0;
@@ -55,7 +63,11 @@ public class Games extends JPanel implements ActionListener{
         adultsDead = 0;
         oldDead = 0;
         this.map = map;
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> fa1917ef310455be7d61a1ed8ce6b2496071b5ee
         totalHealthy = numOfPeople - totalNumOfInfected;
         this.totalNumOfInfected = totalNumOfInfected;
         totalDead = 0;
@@ -67,13 +79,19 @@ public class Games extends JPanel implements ActionListener{
         for(int i = 0; i<num; i++)
         {
             int x = (int)(Math.random()*1810+5);
+            
             int y = (int)(Math.random()*970+5);
             protag.add(new Player(x,y));
         }
+<<<<<<< HEAD
         System.out.println("There's hope for you");
         if(totalNumOfInfected != 0)
         {
             System.out.println("There's no hope for you private");
+=======
+        if(totalNumOfInfected != 0)
+        {
+>>>>>>> fa1917ef310455be7d61a1ed8ce6b2496071b5ee
             for (int a = 0; a<totalNumOfInfected; a++)
             {
                 int b = (int)(Math.random()*protag.size());
@@ -88,7 +106,12 @@ public class Games extends JPanel implements ActionListener{
                     else if (protag.get(b).getAge().equals("Old"))
                         oldInfected++;
                 }
+<<<<<<< HEAD
             }}
+=======
+            }
+        }
+>>>>>>> fa1917ef310455be7d61a1ed8ce6b2496071b5ee
 
     }
 
@@ -271,8 +294,30 @@ public class Games extends JPanel implements ActionListener{
                 }
 
             }
-            
+            if(protag.get(i).getStatus() == 1){
+                if (protag.get(i).death())
+                {totalNumOfInfected--;
+                    if (protag.get(i).getAge().equals("Kid"))
+                    {
+                        kidsInfected--;
+                        kidsDead++;
+                    }
+                    else if (protag.get(i).getAge().equals("Normal"))
+                    {
+                        adultsInfected--;
+                        adultsDead++;
+                    }
+                    else if (protag.get(i).getAge().equals("Old"))
+                    {
+                        oldInfected--;
+                        oldDead++;
+                    }
+                    totalDead++;
+                }
+            }
         }
+        
+        
         for (int i = 0; i<protag.size(); i++)
         {
             if (protag.get(i).getStatus() == 0)
