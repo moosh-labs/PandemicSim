@@ -92,35 +92,35 @@ public class Games extends JPanel implements ActionListener{
         else {
              for(int i = 0; i<protag.size(); i++)
          {
-                for(int j = 0; j<protag.size(); j++)
+                for(int j = 1; j<protag.size(); j++)
              {
                     if(j != i){
-                     if (protag.get(i).getX()-protag.get(j).getX()<25&&protag.get(i).getX()-protag.get(j).getX()>0)
+                     if (protag.get(i).getX() - protag.get(j).getX() < 200 && protag.get(i).getX() - protag.get(j).getX() > 0)
                          {
-                            System.out.println(protag.get(i) + " " + protag.get(i).getX() + " " + protag.get(j) + " " + protag.get(j).getX());
                           protag.get(i).update(3);
                           protag.get(j).update(2);
                          }
-                     else{ if (protag.get(i).getX()-protag.get(j).getX()>-25&&protag.get(i).getX()-protag.get(j).getX()<0)
+                     else{ if (protag.get(i).getX() - protag.get(j).getX() > -200 && protag.get(i).getX() - protag.get(j).getX() < 0)
                          {
                           protag.get(i).update(2);
                           protag.get(j).update(3);
                          }
-                     else{ if (protag.get(i).getY()-protag.get(j).getY()<25&&protag.get(i).getY()-protag.get(j).getY()>0)
+                     else{ if (protag.get(i).getY() - protag.get(j).getY() < 200 && protag.get(i).getY() - protag.get(j).getY() > 0)
                          {
-                             protag.get(i).update(1);
-                             protag.get(j).update(0);
+                            protag.get(j).update(0);
+                            protag.get(i).update(1);
                          }
-                     else{ if (protag.get(i).getY()-protag.get(j).getY()>-25&&protag.get(i).getY()-protag.get(j).getY()<0)
+                             
+                     else{ if (protag.get(i).getY() - protag.get(j).getY() > -200 && protag.get(i).getY() - protag.get(j).getY() < 0)
                          {
                              protag.get(i).update(0);
                              protag.get(j).update(1);
                          }
-                     protag.get(i).update();
-                 }
+                    }
                 }
              }
-         }
+             protag.get(i).update();
+            }
      }
          }}}
     
@@ -131,7 +131,7 @@ public class Games extends JPanel implements ActionListener{
         
         for(int i = 0; i<protag.size(); i++)
         {
-            for(int j = 0; i<protag.size(); i++)
+            for(int j = 0; j<protag.size(); j++)
             {
                 if (protag.get(i).getStatus() == 1)
                     break;
